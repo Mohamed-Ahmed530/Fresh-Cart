@@ -1,0 +1,16 @@
+<section class="pt-5">
+
+    <h1 class="text-4xl font-medium mb-4 text-main">All Brands<b>:</b></h1>
+    
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-10">
+            @for (brand of brands; track brand._id) {
+                <div class="card product shadow-lg relative">
+                        <div class="card-img cursor-pointer">
+                            <img [src]="brand.image" class="w-full object-contain" [alt]="brand.name">
+                            <h2 class="text-main text-2xl m-2 text-center"> {{ brand.name }} </h2>
+                        </div>
+                </div>
+            }
+    </div>
+
+</section>
