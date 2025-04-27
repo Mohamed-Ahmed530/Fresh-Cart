@@ -28,7 +28,7 @@
 
 ## 🚀 Live Demo
 
-[**View Project Online**](https://fresh-cart-m5d-app.vercel.app)
+[**View Project Online**](https://fresh-cart-m5d.vercel.app/register)
 
 ---
 
