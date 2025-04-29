@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { WishListService } from '../../core/services/wishList/wish-list.service';
 
 @Component({
   selector: 'app-home',
@@ -30,7 +31,9 @@ export class HomeComponent implements OnInit , OnDestroy {
   private readonly categoriesService = inject(CategoriesService); //2
 
   private readonly cartService = inject(CartService);
-  
+
+  private readonly wishListService = inject(WishListService);
+
   private readonly toastrService = inject(ToastrService);  
   
 
@@ -88,6 +91,29 @@ export class HomeComponent implements OnInit , OnDestroy {
     this.categorySubscription.unsubscribe();
     
   }
+
+
+  
+  // ==============================
+  // WishList
+  
+  addToWishList(id:string):void{
+    this.wishListService.addProductToWishlist(id).subscribe({
+      next:(res)=>{
+        // console.log(res);
+        if (res.status === "success") {
+          this.toastrService.success(res.message)
+        }
+      },
+      error:(err)=>{
+        // console.log(err);
+      }
+    })
+
+  }
+
+
+
 
   // ==============================
 

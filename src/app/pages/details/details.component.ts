@@ -6,6 +6,7 @@ import { CurrencyPipe } from '@angular/common';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { WishListService } from '../../core/services/wishList/wish-list.service';
 
 @Component({
   selector: 'app-details',
@@ -18,6 +19,7 @@ export class DetailsComponent implements OnInit {
   private readonly activatedRoute = inject(ActivatedRoute)
   private readonly productsService = inject(ProductsService)
   private readonly cartService = inject(CartService);
+  private readonly wishListService = inject(WishListService);
   private readonly toastrService = inject(ToastrService);
 
 
@@ -45,21 +47,37 @@ export class DetailsComponent implements OnInit {
   }
 
 
-  // cart
   addToCart(id:string){
     this.cartService.addProductToCart(id).subscribe({
       next:(res)=>{
-      // console.log(res);
+    
       this.cartService.numOfCart.set( res.numOfCartItems ) 
       if (res.status === "success") {
         this.toastrService.success(res.message)
       }
       },error:(err)=>{
-        // console.log(err);
+
       }
     })
   }
 
+
+
+  
+  addToWishList(id:string):void{
+    this.wishListService.addProductToWishlist(id).subscribe({
+      next:(res)=>{
+    
+        if (res.status === "success") {
+          this.toastrService.success(res.message)
+        }
+      },
+      error:(err)=>{
+
+      }
+    })
+
+  }
 
 
   // slider

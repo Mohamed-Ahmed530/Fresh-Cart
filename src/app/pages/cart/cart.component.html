@@ -24,7 +24,7 @@
         
                     <div class="">
                         <h3 class="text-xl">Title<b>:</b> {{product.product.title}} </h3>
-                        <h4 class="text-main text-xl my-1">Price<b>:</b> <span class="font-medium"> {{product.price | currency: "GBP"  }} </span> </h4>
+                        <h4 class="text-main text-xl my-1">Price<b>:</b> <span class="font-medium"> {{product.price | currency: "EGP"  }} </span> </h4>
                         <button (click)="removeItem(product.product.id)" class="remove shadow hover:shadow-md duration-500 font-medium border rounded-md px-5 py-2"> <i class="fa-regular fa-trash-can px-1"></i> Remove</button>
                     </div>
                     
@@ -44,7 +44,7 @@
 
     </section>
 }@else {
-    <div class="flex justify-center items-center">
-        <img src="images/empty-shopping-cart.jpg" class="h-full" alt="Empty Cart">
+    <div>
+        <h2 class="text-4xl font-medium mb-4 text-center text-main">Your Cart Is Empty</h2>
     </div>
 }

@@ -17,9 +17,13 @@
                 </owl-carousel-o>
             </div>
             <div>
+                
                 <h2 class="text-2xl"> {{detailsProduct.title}} </h2>
                 <p class="text-gray-500 my-2"> {{detailsProduct.description}} </p>
-                <h3 class="text-2xl"> {{detailsProduct.category.name}} </h3>
+                <div class="flex justify-between items-center my-2">
+                    <h3 class="text-2xl"> {{detailsProduct.category.name}} </h3>
+                    <span (click)="addToWishList(detailsProduct.id)" class="hart cursor-pointer"> <i class="fa-solid fa-heart-circle-plus text-2xl"></i> </span>
+                </div>
                 <div class="flex justify-between items-center">
                     <span class="my-1 font-medium"> {{  detailsProduct.price | currency:"EGP" }} </span>
                     <div class="flex items-center">

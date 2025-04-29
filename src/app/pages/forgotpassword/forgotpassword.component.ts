@@ -29,7 +29,7 @@ export class ForgotpasswordComponent {
   })
 
   verifyCode:FormGroup = this.formBuilder.group({
-    resetCode:[null, [Validators.required, Validators.pattern(/^[0-9]{6}$/)]]
+    resetCode:[null, [Validators.required, Validators.pattern(/^[0-9]{5}$/)]]
   })
   
   resetPassword:FormGroup = this.formBuilder.group({

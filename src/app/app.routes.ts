@@ -16,6 +16,7 @@ export const routes: Routes = [
     { path: "", component: MainLayoutComponent, canActivate:[authGuard] , children:[
         { path:"home", loadComponent:()=> import('./pages/home/home.component').then( (c)=>c.HomeComponent ), title:"Home"},
         { path:"cart", loadComponent:()=> import('./pages/cart/cart.component').then( (c)=>c.CartComponent ), title:"Cart"},
+        { path:"wishlist", loadComponent:()=> import('./pages/wishlist/wishlist.component').then( (c)=>c.WishlistComponent ), title:"Wishlist"},
         { path:"products", loadComponent:()=> import('./pages/products/products.component').then( (c)=>c.ProductsComponent ), title:"Products"},
         { path:"categories", loadComponent:()=> import('./pages/categories/categories.component').then( (c)=>c.CategoriesComponent ) , title:"Categories"},
         { path:"brands", loadComponent:()=> import('./pages/brands//brands.component').then( (c)=>c.BrandsComponent ) , title:"Brands"},
@@ -25,5 +26,4 @@ export const routes: Routes = [
         { path:"**", component: NotfoundComponent, title:"NotFound"}
     ]} 
 ];
-
 

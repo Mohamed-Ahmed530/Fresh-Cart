@@ -4,6 +4,7 @@ import { ICart } from '../../shared/interFaces/icart';
 import { CurrencyPipe } from '@angular/common';
 import { log } from 'console';
 import { RouterLink} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -14,6 +15,8 @@ import { RouterLink} from '@angular/router';
 export class CartComponent implements OnInit {
 
   private readonly cartService = inject(CartService)
+    private readonly toastrService = inject(ToastrService);  
+  
 
   cartDetails:ICart = {} as ICart
 
@@ -43,6 +46,7 @@ export class CartComponent implements OnInit {
         // console.log(res);
         this.cartDetails = res.data   //?
         this.cartService.numOfCart.set( res.numOfCartItems )
+        this.toastrService.success("The product has been successfully removed from your shopping cart.")
       },error:(err)=>{
         // console.log(err);
       }
@@ -54,6 +58,7 @@ export class CartComponent implements OnInit {
       next: (res) =>{
         // console.log(res);
         this.cartDetails = res.data    //?
+        this.toastrService.success(res.status)
       },error:(err)=>{
         // console.log(err);
       }
@@ -69,6 +74,7 @@ export class CartComponent implements OnInit {
         if (res.message === "success") {
           this.cartDetails = {} as ICart;
           this.cartService.numOfCart.set(0)
+          this.toastrService.success("The products have been successfully removed from your shopping cart.")
         }
       },error:(err)=>{
         // console.log(err);

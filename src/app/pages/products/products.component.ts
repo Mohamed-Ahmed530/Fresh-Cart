@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { WishListService } from '../../core/services/wishList/wish-list.service';
 
 @Component({
   selector: 'app-products',
@@ -24,6 +25,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private readonly productsService = inject(ProductsService)
 
   private readonly cartService = inject(CartService) 
+
+  private readonly wishListService = inject(WishListService);
 
   private readonly toastrService = inject(ToastrService);
 
@@ -58,6 +61,23 @@ export class ProductsComponent implements OnInit, OnDestroy {
       }
     })
   }
+
+
+  addToWishList(id:string):void{
+    this.wishListService.addProductToWishlist(id).subscribe({
+      next:(res)=>{
+        console.log(res);
+        if (res.status === "success") {
+          this.toastrService.success(res.message)
+        }
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
+
+  }
+
 
 
   ngOnDestroy(): void {

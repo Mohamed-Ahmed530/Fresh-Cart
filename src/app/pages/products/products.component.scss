@@ -26,3 +26,11 @@ button i {
 button:hover i{
     transform: scale(1.2);
 }
+
+.hart i {
+    transition: all 0.5s;
+}
+
+.hart:hover {
+    color: red;
+}

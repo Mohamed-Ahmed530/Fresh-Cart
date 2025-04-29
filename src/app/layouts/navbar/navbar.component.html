@@ -59,6 +59,10 @@
                     }
                     @else {
                         <li>
+                            <a routerLink="wishlist" routerLinkActive="text-hart" class="hart block ms-2 hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page">  <i class="fa-solid fa-heart text-[28px]"></i>
+                            </a>
+                        </li>
+                        <li>
                             <a routerLink="/cart" routerLinkActive="text-main" class="cart block mx-4  hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page"> <i class="fa-solid fa-cart-shopping fa-2x"></i> 
                                 <span class="inline-flex items-center rounded-2xl bg-green-50 py-[1] px-[5px] text-[18px] font-bold te
                                 xt-green-700 ring-1  ring-green-600/20 ring-inset absolute top-0 left-8"> {{ counterofCar() }} </span>

@@ -10,6 +10,7 @@
 - Product browsing with categories, brands & detailed view
 - Responsive UI with dynamic loading indicators
 - Cart management: Add, remove, and update items
+- Wishlist feature to save and organize favorite products
 - Checkout flow with address form & online payment simulation
 - Order tracking: View all completed orders
 - Angular routing, lazy loading, and route guards
