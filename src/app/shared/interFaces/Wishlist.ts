@@ -1,4 +1,4 @@
-export interface IWishlist {
+export interface Wishlist {
   status: string;
   count: number;
   data: Datum[];

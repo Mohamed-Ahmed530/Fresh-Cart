@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
 import { Observable } from 'rxjs';
-import { IAllOrders } from '../../../shared/interFaces/IAllOrders';
+import { AllOrders } from '../../../shared/interFaces/AllOrders';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +20,11 @@ export class OrdersService {
   }
 
   getAllOrders():Observable<any>{
-    return this.httpClient.get<IAllOrders>(`${environment.baseUrl}/api/v1/orders/user/`)
+    return this.httpClient.get<AllOrders>(`${environment.baseUrl}/api/v1/orders/user/`)
   }
 
   getUserOrders(id:string):Observable<any>{
-    return this.httpClient.get<IAllOrders>(`${environment.baseUrl}/api/v1/orders/user/${id}`)
+    return this.httpClient.get<AllOrders>(`${environment.baseUrl}/api/v1/orders/user/${id}`)
   }
 
   onlinePaymennt(id:string, data:object):Observable<any>{

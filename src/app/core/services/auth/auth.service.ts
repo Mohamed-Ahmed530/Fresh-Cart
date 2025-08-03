@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
-import { LoginUser, RegisterUser } from '../../../shared/interFaces/IAuthUser';
+import { LoginUser, RegisterUser } from '../../../shared/interFaces/AuthUser';
 
 @Injectable({
   providedIn: 'root'

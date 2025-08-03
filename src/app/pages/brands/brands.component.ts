@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { BrandsService } from '../../core/services/brands/brands.service';
-import { IBrands } from '../../shared/interFaces/Ibrands';
+import { Brands } from '../../shared/interFaces/Brands';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 export class BrandsComponent implements OnInit, OnDestroy {
 
   private readonly brandsService = inject(BrandsService);
-  brands:IBrands[] = [] 
+  brands:Brands[] = [] 
 
   ngOnInit(): void {
       this.AllBrands()

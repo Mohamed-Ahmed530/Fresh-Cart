@@ -3,7 +3,7 @@ import { ProductsService } from '../../../../core/services/products/products.ser
 import { CartService } from '../../../../core/services/cart/cart.service';
 import { WishListService } from '../../../../core/services/wishList/wish-list.service';
 import { ToastrService } from 'ngx-toastr';
-import { IProduct } from '../../../../shared/interFaces/Iproduct';
+import { Product } from '../../../../shared/interFaces/Product';
 import { Subscription } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
@@ -31,10 +31,10 @@ export class AllProductsComponent implements OnInit, OnDestroy {
   private readonly toastrService = inject(ToastrService);  
   
   
-  // products!:IProduct;  //* 1 solution
-  // products:IProduct = {} as IProduct ; //* 2 solution
-  // products:IProduct | null = null ;  //* 3 solution
-  products:IProduct[] = [];  //* 3 solution
+  // products!:Product;  //* 1 solution
+  // products:Product = {} as Product ; //* 2 solution
+  // products:Product | null = null ;  //* 3 solution
+  products:Product[] = [];  //* 3 solution
   
   productSubscription: Subscription = new Subscription();
 

@@ -2,7 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, inject, OnInit } from '@angular/core';
 import { WishListService } from '../../core/services/wishList/wish-list.service';
 import { CartService } from '../../core/services/cart/cart.service';
-import { IWishlist } from '../../shared/interFaces/Iwishlist';
+import { Wishlist } from '../../shared/interFaces/Wishlist';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -20,7 +20,7 @@ export class WishlistComponent implements OnInit {
   isLoading:boolean = true;
 
 
-  wishListData:IWishlist = {} as IWishlist
+  wishListData:Wishlist = {} as Wishlist
 
   ngOnInit(): void {
     this.getWishListData();    

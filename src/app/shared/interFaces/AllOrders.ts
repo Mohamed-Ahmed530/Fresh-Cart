@@ -1,4 +1,4 @@
-export interface IAllOrders {
+export interface AllOrders {
     shippingAddress?: ShippingAddress;
     taxPrice: number;
     shippingPrice: number;

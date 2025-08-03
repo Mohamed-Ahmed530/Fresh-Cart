@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CartService } from '../../core/services/cart/cart.service';
-import { ICart } from '../../shared/interFaces/Icart';
+import { Cart } from '../../shared/interFaces/Cart';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
   private readonly toastrService = inject(ToastrService);  
   
 
-  cartDetails:ICart = {} as ICart
+  cartDetails:Cart = {} as Cart
 
   isLoading: boolean = true;
 
@@ -69,7 +69,7 @@ export class CartComponent implements OnInit {
       next:(res)=>{
         // console.log(res);
         if (res.message === "success") {
-          this.cartDetails = {} as ICart;
+          this.cartDetails = {} as Cart;
           this.cartService.numOfCart.set(0)
           this.toastrService.success("The products have been successfully removed from your shopping cart")
         }

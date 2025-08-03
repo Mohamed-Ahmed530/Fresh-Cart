@@ -1,4 +1,4 @@
-export interface IOnlinepayment {
+export interface OnlinePayment {
     status: string;
     session: Session;
 }

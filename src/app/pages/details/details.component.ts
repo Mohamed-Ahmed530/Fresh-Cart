@@ -1,7 +1,6 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProductsService } from '../../core/services/products/products.service';
-import { IProduct } from '../../shared/interFaces/Iproduct';
 import { CurrencyPipe } from '@angular/common';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../../core/services/cart/cart.service';
@@ -9,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { WishListService } from '../../core/services/wishList/wish-list.service';
 import { Subscription } from 'rxjs';
 import { TermTextPipe } from '../../shared/pipes/term-text.pipe';
+import { Product } from '../../shared/interFaces/Product';
 
 @Component({
   selector: 'app-details',
@@ -24,8 +24,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private readonly wishListService = inject(WishListService);
   private readonly toastrService = inject(ToastrService);
 
-  detailsProduct!:IProduct;
-  relatedProducts!:IProduct[];
+  detailsProduct!:Product;
+  relatedProducts!:Product[];
 
   subscription:Subscription = new Subscription()
 

@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CategoriesService } from '../../../../core/services/categories/categories.service';
 import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
 import { Subscription } from 'rxjs';
-import { ICategory } from '../../../interFaces/Icategory';
+import { Category } from '../../../interFaces/Category';
 
 @Component({
     selector: 'app-popular-categories',
@@ -13,7 +13,7 @@ import { ICategory } from '../../../interFaces/Icategory';
 export class PopularCategoriesComponent implements OnInit, OnDestroy {
     private readonly categoriesService = inject(CategoriesService);
 
-    categories: ICategory[] = [];
+    categories: Category[] = [];
     
     categorySubscription: Subscription = new Subscription();
 
