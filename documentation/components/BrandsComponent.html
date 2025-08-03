@@ -373,7 +373,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/IBrands.html" target="_self" >IBrands[]</a></code>
+                        <i>Type : </i>        <code><a href="../interfaces/Brands.html" target="_self" >Brands[]</a></code>
 
                     </td>
                 </tr>
@@ -451,7 +451,7 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { BrandsService } from &#x27;../../core/services/brands/brands.service&#x27;;
-import { IBrands } from &#x27;../../shared/interFaces/Ibrands&#x27;;
+import { Brands } from &#x27;../../shared/interFaces/Brands&#x27;;
 import { Subscription } from &#x27;rxjs&#x27;;
 
 @Component({
@@ -463,7 +463,7 @@ import { Subscription } from &#x27;rxjs&#x27;;
 export class BrandsComponent implements OnInit, OnDestroy {
 
   private readonly brandsService &#x3D; inject(BrandsService);
-  brands:IBrands[] &#x3D; [] 
+  brands:Brands[] &#x3D; [] 
 
   ngOnInit(): void {
       this.AllBrands()

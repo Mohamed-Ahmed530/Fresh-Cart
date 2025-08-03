@@ -786,7 +786,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/IProduct.html" target="_self" >IProduct</a></code>
+                        <i>Type : </i>        <code><a href="../interfaces/Product.html" target="_self" >Product</a></code>
 
                     </td>
                 </tr>
@@ -839,7 +839,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>IProduct[]</code>
+                        <i>Type : </i>    <code>Product[]</code>
 
                     </td>
                 </tr>
@@ -946,7 +946,6 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject, OnInit, OnDestroy } from &#x27;@angular/core&#x27;;
 import { ActivatedRoute, RouterLink } from &#x27;@angular/router&#x27;;
 import { ProductsService } from &#x27;../../core/services/products/products.service&#x27;;
-import { IProduct } from &#x27;../../shared/interFaces/Iproduct&#x27;;
 import { CurrencyPipe } from &#x27;@angular/common&#x27;;
 import { CarouselModule, OwlOptions } from &#x27;ngx-owl-carousel-o&#x27;;
 import { CartService } from &#x27;../../core/services/cart/cart.service&#x27;;
@@ -954,6 +953,7 @@ import { ToastrService } from &#x27;ngx-toastr&#x27;;
 import { WishListService } from &#x27;../../core/services/wishList/wish-list.service&#x27;;
 import { Subscription } from &#x27;rxjs&#x27;;
 import { TermTextPipe } from &#x27;../../shared/pipes/term-text.pipe&#x27;;
+import { Product } from &#x27;../../shared/interFaces/Product&#x27;;
 
 @Component({
   selector: &#x27;app-details&#x27;,
@@ -969,8 +969,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private readonly wishListService &#x3D; inject(WishListService);
   private readonly toastrService &#x3D; inject(ToastrService);
 
-  detailsProduct!:IProduct;
-  relatedProducts!:IProduct[];
+  detailsProduct!:Product;
+  relatedProducts!:Product[];
 
   subscription:Subscription &#x3D; new Subscription()
 

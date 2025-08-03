@@ -504,7 +504,7 @@
 import { inject, Injectable } from &#x27;@angular/core&#x27;;
 import { environment } from &#x27;../../environment/environment&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
-import { IAllOrders } from &#x27;../../../shared/interFaces/IAllOrders&#x27;;
+import { AllOrders } from &#x27;../../../shared/interFaces/AllOrders&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
@@ -522,11 +522,11 @@ export class OrdersService {
   }
 
   getAllOrders():Observable&lt;any&gt;{
-    return this.httpClient.get&lt;IAllOrders&gt;(&#x60;${environment.baseUrl}/api/v1/orders/user/&#x60;)
+    return this.httpClient.get&lt;AllOrders&gt;(&#x60;${environment.baseUrl}/api/v1/orders/user/&#x60;)
   }
 
   getUserOrders(id:string):Observable&lt;any&gt;{
-    return this.httpClient.get&lt;IAllOrders&gt;(&#x60;${environment.baseUrl}/api/v1/orders/user/${id}&#x60;)
+    return this.httpClient.get&lt;AllOrders&gt;(&#x60;${environment.baseUrl}/api/v1/orders/user/${id}&#x60;)
   }
 
   onlinePaymennt(id:string, data:object):Observable&lt;any&gt;{

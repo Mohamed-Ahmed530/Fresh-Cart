@@ -122,7 +122,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/shared/interFaces/Iwishlist.ts</code>
+            <code>src/app/shared/interFaces/Product.ts</code>
         </p>
 
 
@@ -312,47 +312,40 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface IWishlist {
-  status: string;
-  count: number;
-  data: Datum[];
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Product {
+    sold: number;
+    images: string[];
+    subcategory: Subcategory[];
+    ratingsQuantity: number;
+    _id: string;
+    title: string;
+    slug: string;
+    description: string;
+    quantity: number;
+    price: number;
+    imageCover: string;
+    category: Category;
+    brand: Category;
+    ratingsAverage: number;
+    createdAt: string;
+    updatedAt: string;
+    id: string;
 }
 
-export interface Datum {
-  sold: number;
-  images: string[];
-  subcategory: Subcategory[];
-  ratingsQuantity: number;
-  _id: string;
-  title: string;
-  slug: string;
-  description: string;
-  quantity: number;
-  price: number;
-  imageCover: string;
-  category: Category;
-  brand: Category;
-  ratingsAverage: number;
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
-  id: string;
-  priceAfterDiscount?: number;
-  availableColors?: any[];
-}
 
 export interface Category {
-  _id: string;
-  name: string;
-  slug: string;
-  image: string;
+    _id: string;
+    name: string;
+    slug: string;
+    image: string;
 }
 
+
 export interface Subcategory {
-  _id: string;
-  name: string;
-  slug: string;
-  category: string;
+    _id: string;
+    name: string;
+    slug: string;
+    category: string;
 }</code></pre>
     </div>
 </div>

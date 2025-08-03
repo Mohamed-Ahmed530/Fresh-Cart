@@ -161,6 +161,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
+                                <a href="interfaces/AllOrders.html" data-type="entity-link" >AllOrders</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Brands.html" data-type="entity-link" >Brands</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Cart.html" data-type="entity-link" >Cart</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/CartItem.html" data-type="entity-link" >CartItem</a>
                             </li>
                             <li class="link">
@@ -176,37 +185,25 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Category-3.html" data-type="entity-link" >Category</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Category-4.html" data-type="entity-link" >Category</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/Datum.html" data-type="entity-link" >Datum</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/IAllOrders.html" data-type="entity-link" >IAllOrders</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/IBrands.html" data-type="entity-link" >IBrands</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/ICart.html" data-type="entity-link" >ICart</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/ICategory.html" data-type="entity-link" >ICategory</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/IOnlinepayment.html" data-type="entity-link" >IOnlinepayment</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/IProduct.html" data-type="entity-link" >IProduct</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/IWishlist.html" data-type="entity-link" >IWishlist</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/LoginUser.html" data-type="entity-link" >LoginUser</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/OnlinePayment.html" data-type="entity-link" >OnlinePayment</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Product.html" data-type="entity-link" >Product</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Product-1.html" data-type="entity-link" >Product</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Product-2.html" data-type="entity-link" >Product</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Product2.html" data-type="entity-link" >Product2</a>
@@ -234,6 +231,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/User.html" data-type="entity-link" >User</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Wishlist.html" data-type="entity-link" >Wishlist</a>
                             </li>
                         </ul>
                     </li>
