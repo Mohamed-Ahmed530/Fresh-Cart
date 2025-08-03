@@ -58,9 +58,9 @@
 
         </div>
         
-        <div class="mb-1">
+        <div class="mb-1 relative">
             <label for="Password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password<b>:</b></label>
-            <input formControlName="password" type="password" id="Password" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
+            <input formControlName="password" [type]=" !togglePassword ?'password' : 'text' " id="Password" class="pe-10 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
         
             @let passwordControl = registerForm.get('password'); 
             @if (passwordControl?.errors && passwordControl?.touched) {
@@ -81,12 +81,19 @@
                     </div>
                 </div>
             }
+
+            @if (!togglePassword) {
+                <span (click)="toggle()" class="absolute cursor-pointer top-[38px] right-2" > <i class="fa-solid fa-eye"></i> </span>
+            }@else {
+                <span (click)="toggle()" class="absolute cursor-pointer top-[38px] right-2" > <i class="fa-solid fa-eye-slash"></i> </span>
+            }
+
         
         </div>
 
-        <div class="mb-1">
+        <div class="mb-1 relative">
             <label for="RePassword" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Re Password<b>:</b></label>
-            <input formControlName="rePassword" type="password" id="RePassword" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
+            <input formControlName="rePassword" [type]=" !togglePassword ? 'password' : 'text' " id="RePassword" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
         
             @let rePasswordControl = registerForm.get('rePassword'); 
             @if (registerForm.getError('mismatch') && rePasswordControl?.touched) {
@@ -114,6 +121,12 @@
                         </ul>
                     </div>
                 </div>
+            }
+
+            @if (!togglePassword) {
+                <span (click)="toggle()" class="absolute cursor-pointer top-[38px] right-2" > <i class="fa-solid fa-eye"></i> </span>
+            }@else {
+                <span (click)="toggle()" class="absolute cursor-pointer top-[38px] right-2" > <i class="fa-solid fa-eye-slash"></i> </span>
             }
         
         </div>
@@ -148,7 +161,7 @@
                 <span> <i class="fa fa-spin fa-spinner"></i> </span> 
             }
         </button>
-        
+
         @if (succcess) {
             <p class="flex items-center p-4 mb-4 text-2xl text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800">
                 {{succcess}} <i class="fa-solid fa-check text-3xl ms-3"></i>

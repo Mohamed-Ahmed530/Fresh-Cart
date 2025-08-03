@@ -1,6 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FlowbiteService } from './core/services/flowbite/flowbite.service';
 import { NgxSpinnerComponent } from 'ngx-spinner';
 
 @Component({
@@ -9,14 +8,7 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit  {
+export class AppComponent   {
   title = 'FreshCart';
-    
-    private readonly flowbiteService = inject(FlowbiteService);
-
-    ngOnInit(): void {
-      this.flowbiteService.loadFlowbite(flowbite => {      
-      });
-    }
 
 }

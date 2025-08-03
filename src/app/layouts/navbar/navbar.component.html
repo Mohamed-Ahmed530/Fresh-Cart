@@ -1,4 +1,4 @@
-<nav [class.bg-gray-100]="scrollp" [class.shadow-xl]="scrollp" [class.py-1]="scrollp" class="bg-gray-100 border-gray-100 dark:bg-gray-900">
+<nav  [class.shadow-xl]="scrollp" [class.py-1]="scrollp" class="bg-gray-100 border-gray-100 dark:bg-gray-900">
         <div class="max-w-screen-2xl  flex flex-wrap items-center justify-between mx-auto px-16 py-2">
             <a routerLink="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="/images/freshcart-logo.svg" alt="freshcart-logo">
@@ -30,22 +30,22 @@
 
                 <ul class="md:items-center md:justify-center ms-auto capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a class="block hover:text-black cursor-pointer text-gray-700 py-2 px-2 rounded-sm"  href="https://www.facebook.com/" target="_blank" aria-current="page">
+                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm" >
                             <i class="fab fa-facebook text-xl hover:scale-110 duration-300"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="block hover:text-black cursor-pointer text-gray-700 py-2 px-2 rounded-sm"  href="https://www.instagram.com/" target="_blank" aria-current="page">
+                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm" >
                             <i class="fab fa-instagram text-xl hover:scale-110 duration-300"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="block hover:text-black cursor-pointer text-gray-700 py-2 px-2 rounded-sm"  href="https://x.com/" target="_blank" aria-current="page">
+                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm" >
                             <i class="fab fa-twitter text-xl hover:scale-110 duration-300"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="block hover:text-black cursor-pointer text-gray-700 py-2 px-2 rounded-sm"  href="https://www.youtube.com/" target="_blank" aria-current="page">
+                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm">
                             <i class="fab fa-youtube text-xl hover:scale-110 duration-300"></i>
                         </a>
                     </li>
@@ -59,11 +59,11 @@
                     }
                     @else {
                         <li>
-                            <a routerLink="wishlist" routerLinkActive="text-hart" class="hart block ms-2 hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page">  <i class="fa-solid fa-heart text-[28px]"></i>
+                            <a routerLink="/wishlist" routerLinkActive="text-hart" class="hart block ms-[6px] xl:hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page">  <i class="fa-solid fa-heart text-[28px]"></i>
                             </a>
                         </li>
                         <li>
-                            <a routerLink="/cart" routerLinkActive="text-main" class="cart block mx-4  hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page"> <i class="fa-solid fa-cart-shopping fa-2x"></i> 
+                            <a routerLink="/cart" routerLinkActive="text-main" class="cart block lg:mx-4  xl:hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page"> <i class="fa-solid fa-cart-shopping fa-2x"></i> 
                                 <span class="inline-flex items-center rounded-2xl bg-green-50 py-[1] px-[5px] text-[18px] font-bold te
                                 xt-green-700 ring-1  ring-green-600/20 ring-inset absolute top-0 left-8"> {{ counterofCar() }} </span>
                             </a>

@@ -57,8 +57,8 @@
                         <h2 class="font-semibold text-xl leading-8 text-black mb-3">
                           {{prod.product.title}}
                         </h2>
-                        <p class="font-normal text-lg leading-8 text-gray-500 mb-3">
-                          By: Dust Studios
+                        <p class="font-bold text-lg leading-8 text-gray-900 mb-3">
+                          Price : {{prod.price}}
                         </p>
                         <div class="flex items-center">
                           <p class="font-medium text-base leading-7 text-black">
@@ -69,24 +69,10 @@
                     </div>
                     <div class="grid grid-cols-5">
                       <div
-                        class="col-span-5 lg:col-span-1 flex items-center max-lg:mt-3"
-                      >
-                        <div class="flex gap-3 lg:block">
-                          <p class="font-medium text-sm leading-7 text-black">
-                            price
-                          </p>
-                          <p
-                            class="lg:mt-4 font-medium text-sm leading-7 text-indigo-600"
-                          >
-                            {{ prod.price }}
-                          </p>
-                        </div>
-                      </div>
-                      <div
                         class="col-span-5 lg:col-span-2 flex items-center max-lg:mt-3"
                       >
                         <div class="flex gap-3 lg:block">
-                          <p class="font-medium text-sm leading-7 text-black">
+                          <p class="font-bold text-sm leading-7 text-black">
                             Category
                           </p>
                           <p
@@ -102,7 +88,7 @@
                       >
                         <div class="flex gap-3 lg:block">
                           <p
-                            class="font-medium text-sm whitespace-nowrap leading-6 text-black"
+                            class="font-bold text-sm whitespace-nowrap leading-6 text-black"
                           >
                             Expected Delivery Time
                           </p>

@@ -11,20 +11,16 @@ export class ProductsService {
 
     constructor( private httpClient:HttpClient ) { }
 
-
-    getAllProducts():Observable<any>
+    getAllProducts(categoryID?:string):Observable<any>
     {
-      return this.httpClient.get(`${environment.baseUrl}/api/v1/products`)
+      //* Related Products
+      let url = categoryID? `${environment.baseUrl}/api/v1/products?category[in]=${categoryID}` : "https://ecommerce.routemisr.com/api/v1/products" 
+      return this.httpClient.get(url)
+      // return this.httpClient.get(`${environment.baseUrl}/api/v1/products`)
     }
-    
-    // ============= 
     
     getSpecificProducts(id:string | null):Observable<any>
     {
       return this.httpClient.get(`${environment.baseUrl}/api/v1/products/${id}`)
     }
-
-
-
-
 }

@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { BrandsService } from '../../core/services/brands/brands.service';
-import { IBrands } from '../../shared/interFaces/ibrands';
+import { IBrands } from '../../shared/interFaces/Ibrands';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -23,14 +23,14 @@ export class BrandsComponent implements OnInit, OnDestroy {
   AllBrands(){
     this.brandsSubscription = this.brandsService.getAllBrands().subscribe({
       next:(res)=>{
-        // console.log(res.data);
+        console.log(res.data);
         this.brands = res.data
       }
     })
   }
 
   ngOnDestroy(): void {
-    this.brandsSubscription.unsubscribe;
+    this.brandsSubscription.unsubscribe();
   }
 
 }

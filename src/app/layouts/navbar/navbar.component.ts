@@ -1,8 +1,9 @@
 import { Component, computed, HostListener, inject, input, Input, OnInit, Signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
-import { FlowbiteService } from '../../core/services/flowbite/flowbite.service';
 import { CartService } from '../../core/services/cart/cart.service';
+import { FlowbiteService } from '../../core/services/flowbite/flowbite.service';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-navbar',
@@ -11,28 +12,46 @@ import { CartService } from '../../core/services/cart/cart.service';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements OnInit {
+
+  private readonly authService = inject(AuthService)
+
   // @Input() isLogin: boolean = true;
-  isLogin = input<boolean>(true);
-
+  isLogin = input<boolean>(true); 
   
-
-  // =================
+  scrollp: boolean = false;
+  
   private readonly cartService = inject(CartService)
 
+  private readonly flowbiteService=inject(FlowbiteService)
+
+
+  ngOnInit(): void {
+      // Counter Of Caart
+      this.cartService.getLoggedUserCart().subscribe({
+        next:(res)=>{
+          this.cartService.numOfCart.set( res.numOfCartItems )
+        }
+      })
+  }
+
+  
+  // flowbite
+  ngAfterViewInit(): void {
+    this.flowbiteService.loadFlowbite((flowbite) => {
+      initFlowbite();
+    });
+  }
+
+  // ====
+  
   counterofCar:Signal<number> = computed( ()=>  this.cartService.numOfCart()  )
 
   
   // ========== LogOut ==========
-  private readonly authService = inject(AuthService)
-
   logOut(){
   this.authService.logOutUser();
   }
   
-
-  // =====================
-
-  scrollp: boolean = false;
 
   @HostListener('window:scroll') onscroll() {
     if (window.scrollY > 0) {
@@ -42,21 +61,4 @@ export class NavbarComponent implements OnInit {
     }
   }
   
-
-  // =====================
-
-    ngOnInit(): void {
-
-        // Counter Of Caart
-        this.cartService.getLoggedUserCart().subscribe({
-          next:(res)=>{
-            this.cartService.numOfCart.set( res.numOfCartItems )
-          }
-        })
-
-    }
-
-
-
-
   }

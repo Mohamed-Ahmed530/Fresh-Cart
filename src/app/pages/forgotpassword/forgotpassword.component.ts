@@ -21,8 +21,8 @@ export class ForgotpasswordComponent {
   success:string = "";
   msgError:string = "";
 
-
   private readonly formBuilder = inject( FormBuilder )
+
 
   verifyEmail:FormGroup = this.formBuilder.group({
     email:[null, [Validators.required, Validators.email]]

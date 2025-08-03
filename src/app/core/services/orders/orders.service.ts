@@ -9,32 +9,32 @@ import { IAllOrders } from '../../../shared/interFaces/IAllOrders';
 })
 export class OrdersService {
 
-    constructor() { }
-    private readonly httpClient = inject(HttpClient)
+  private readonly httpClient = inject(HttpClient)
 
-    getAllOrder(id:string):Observable<any>{
-      return this.httpClient.get<IAllOrders>(`${environment.baseUrl}/api/v1/orders/user/${id}`)
-    }
-
-    chechOutPaymennt(id:string, data:object):Observable<any>{
-
-      return this.httpClient.post(`${environment.baseUrl}/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,
-        {
-          "shippingAddress": data
-        }
-      )
-    }
+  constructor() { }
 
 
+  cashOrder(id:string, shippingAddress:{details:string, phone:string, city:string}):Observable<any>{
+    return this.httpClient.post(`${environment.baseUrl}/api/v1/orders/${id}`,{shippingAddress}  
+    )
+  }
 
-  // ============
-  // chechCashorder(id:string, data:{}):Observable<any>{
+  getAllOrders():Observable<any>{
+    return this.httpClient.get<IAllOrders>(`${environment.baseUrl}/api/v1/orders/user/`)
+  }
 
-  //   return this.httpClient.post(`${environment.baseUrl}/api/v1/orders/${id}`,
-  //     {
-  //       "shippingAddress": data
-  //     }  
-  //   )
-  // }
+  getUserOrders(id:string):Observable<any>{
+    return this.httpClient.get<IAllOrders>(`${environment.baseUrl}/api/v1/orders/user/${id}`)
+  }
+
+  onlinePaymennt(id:string, data:object):Observable<any>{
+    return this.httpClient.post(`${environment.baseUrl}/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,
+      {
+        "shippingAddress": data
+      }
+    )
+  }
+
+
 
 }

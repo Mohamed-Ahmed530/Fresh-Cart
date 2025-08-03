@@ -9,7 +9,7 @@
         
         @for (wish of wishListData.data; track $index) {
             
-            <div class="grid md:grid-cols-[10%_minmax(0,1fr)] my-4 py-2 border-b-2 gap-5">
+            <div class="grid md:grid-cols-[20%_minmax(0,1fr)] my-4 py-2 border-b-2 gap-5">
                 <div class="">
                     <img [src]="wish.imageCover" class="w-full" [alt]="wish.title">
                 </div> 
@@ -19,7 +19,7 @@
                     <div class="">
                         <h4 class="text-xl my-1">Date<b>:</b> <span class="font-medium"> {{wish.updatedAt}} </span> </h4>
                         <h3 class="text-xl">Title<b>:</b> {{wish.title}} </h3>
-                        <h4 class="text-main text-xl my-1">Price<b>:</b> <span class="font-medium"> {{wish.price}} </span> </h4>
+                        <h4 class="text-main text-xl my-1">Price<b>:</b> <span class="font-medium"> {{wish.price | currency: "EGP " }} </span> </h4>
                     </div>
                     
                     <div class="flex flex-col-reverse gap-4">

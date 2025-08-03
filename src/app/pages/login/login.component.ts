@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Subscription, timer } from 'rxjs';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,28 +10,17 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
 
   
   private readonly authService = inject( AuthService )
   private readonly formBuilder = inject( FormBuilder )
   private readonly router = inject( Router )
 
+  subscription :Subscription = new Subscription();
+  subscriptionTimer :Subscription = new Subscription();
 
-  
-  // loginForm: FormGroup = new FormGroup({
-  //   email: new FormControl(null, [Validators.required, Validators.email]),
-  //   password: new FormControl(null, [Validators.required, Validators.pattern(/^[A-Z]\w{7,}$/) ] )
-  // });
-  // ,{updateOn:"submit"}   
-
-  //============ pest syntax ===============
-  loginForm: FormGroup = this.formBuilder.group({
-    email:[null, [Validators.required, Validators.email]],
-    password:[null, [Validators.required, Validators.pattern(/^[A-Z]\w{7,}$/) ]]
-  })
-  // =========================================
-
+  loginForm!: FormGroup
 
 
   isLoading:boolean = false;  //check spinner
@@ -38,16 +28,43 @@ export class LoginComponent {
   msgError:string = "";
   succcess:string = "";
 
-    submitForm (){
-    // console.log(this.loginForm.value);
+
+  togilPassword:boolean = false
+
+
+
+  ngOnInit(): void {
+    this.initForm()
+  }
+
+
+  initForm(){
+    this.loginForm = this.formBuilder.group({
+      email:[null, [Validators.required, Validators.email]],
+      password:[null, [Validators.required, Validators.pattern(/^[A-Z]\w{7,}$/) ]]
+    })
+  }
+
+
+
+
+  submitForm (){
     if (this.loginForm.valid) {
       this.isLoading = true;
-      this.authService.sendLoginForm(this.loginForm.value).subscribe({
+        this.subscription =  this.authService.sendLoginForm(this.loginForm.value).subscribe({
         next:(res)=>{
-          // console.log(res);
           if(res.message === "success"){  
+            // setTimeout(() => {
+            // //1- save token
+            // localStorage.setItem("token", res.token)
 
-            setTimeout(() => {
+            // //2- call getUserData
+            // this.authService.getUserData()
+
+            // //3- navigate to home
+            //   this.router.navigate(['/home'])
+            // }, 500);
+            this.subscriptionTimer = timer(500).subscribe( ()=>{      // Another way
             //1- save token
             localStorage.setItem("token", res.token)
 
@@ -56,14 +73,13 @@ export class LoginComponent {
 
             //3- navigate to home
               this.router.navigate(['/home'])
-            }, 500);
-            
+            } )
+
             this.succcess = res.message;
           }
           this.isLoading = false;
         },
         error:(err:HttpErrorResponse)=>{
-          // console.log(err);
           if (err.error.message) {
             this.msgError =  err.error.message;
           }else{
@@ -75,5 +91,18 @@ export class LoginComponent {
     }
   }
 
+
+
+
+  toggle(){
+    this.togilPassword = !this.togilPassword
+  }
+
+
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+    this.subscriptionTimer.unsubscribe()
+  }
 
 }

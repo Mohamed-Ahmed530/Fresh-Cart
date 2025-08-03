@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { CarouselModule} from 'ngx-owl-carousel-o';
 import { CategoriesService } from '../../core/services/categories/categories.service';
-import { ICategory } from '../../shared/interFaces/icategory';
+import { ICategory } from '../../shared/interFaces/Icategory';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,31 +14,32 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   private readonly categoriesService = inject(CategoriesService)
 
-  categories:ICategory[] = []
-  categoriSubscription = new Subscription;
-
-  getCategoriesData (){
-    this.categoriSubscription = this.categoriesService.getAllCategories().subscribe({
-      next:(res)=>{
-        // console.log(res.data);
-        this.categories = res.data;
-      }
-    })
-  }
+  categories:ICategory[] = [];
+  categoriSubscription:Subscription = new Subscription();
 
   ngOnInit(): void {
       this.getCategoriesData();
   }
 
 
+  getCategoriesData (){
+    this.categoriSubscription = this.categoriesService.getAllCategories().subscribe({
+      next:(res)=>{
+        this.categories = res.data;
+      }
+    })
+  }
+
+
+
   ngOnDestroy(): void {
-    this.categoriSubscription.unsubscribe;
+    this.categoriSubscription.unsubscribe();
   }
 
 
   // ============================================
 
-
+  //* signals
   // count1:number= 0;
 
 

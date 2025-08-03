@@ -31,10 +31,16 @@
 
         </div>
         
-        <div class="mb-1">
+        <div class="mb-1 relative">
             <label for="Password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password<b>:</b></label>
-            <input formControlName="password" type="password" id="Password" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
-        
+            <input formControlName="password" [type]="!togilPassword? 'password' : 'text' " id="Password" class="pe-10 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
+            
+            @if (!togilPassword) {
+                <span (click)="toggle()" class="absolute cursor-pointer top-[38px] right-2" > <i class="fa-solid fa-eye"></i> </span>
+            }@else {
+                <span (click)="toggle()" class="absolute cursor-pointer top-[38px] right-2" > <i class="fa-solid fa-eye-slash"></i> </span>
+            }
+
             @let passwordControl = loginForm.get('password'); 
             @if (passwordControl?.errors && passwordControl?.touched) {
                 <div class="flex my-1 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
@@ -64,7 +70,10 @@
             }
         </button>
 
-        <a class="text-main ms-4 text-lg hover:text-black" routerLink="/forgotpassword">ForgotPassword <i class="fa-solid fa-question"></i></a>
+        <div class="flex justify-between px-2">
+            <a class="text-main text-lg hover:text-black" routerLink="/register">SignUp<i class="fa-solid fa-question"></i></a>
+            <a class="text-main ms-4 text-lg hover:text-black" routerLink="/forgotpassword">ForgotPassword<i class="fa-solid fa-question"></i></a>
+        </div>
         
         @if (succcess) {
             <p class="flex items-center p-4 mb-4 text-2xl text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800">

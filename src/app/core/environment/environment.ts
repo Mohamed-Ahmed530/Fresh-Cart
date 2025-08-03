@@ -1,4 +1,5 @@
 // Base URL For API
 export const environment = {
-    baseUrl:"https://ecommerce.routemisr.com"
-}
+    production: false,
+    baseUrl: 'https://ecommerce.routemisr.com',
+};

@@ -1,5 +1,5 @@
 @if (isLoading) {
-    <div class="text-center py-10">
+    <div class="text-center py-10"> 
         <p class="text-xl text-gray-500">Loading your cart...</p>
     </div>
 }
@@ -8,13 +8,12 @@
         <h1 class="text-4xl font-medium mb-4 text-center text-main">Shop Cart</h1>
     
         <div class="flex justify-between items-center">
-            <p class="text-xl text-main">Total Cart Price<b>:</b> <span class="font-medium"> {{cartDetails.totalCartPrice | currency: "EGP" }} </span>  </p>
+            <p class="text-xl text-main">Total Cart Price<b>:</b> <span class="font-medium"> {{cartDetails.totalCartPrice | currency: "EGP " }} </span>  </p>
             <button (click)="clearItems()" class="py-2 px-5 text-white bg-red-700 rounded-md hover:bg-red-800 duration-500 shadow-md"><i class="fa-regular fa-trash-can"></i> Clear Cart</button>
         </div>
 
+        <div class="grid md:grid-cols-[20%_minmax(0,1fr)] my-4 py-2 border-b-2 gap-5">
         @for (product of cartDetails.products; track product.product.id) {
-    
-            <div class="grid md:grid-cols-[10%_minmax(0,1fr)] my-4 py-2 border-b-2 gap-5">
     
                 <div class="">
                     <img [src]="product.product.imageCover" class="w-full" [alt]="product.product.title">
@@ -24,7 +23,7 @@
         
                     <div class="">
                         <h3 class="text-xl">Title<b>:</b> {{product.product.title}} </h3>
-                        <h4 class="text-main text-xl my-1">Price<b>:</b> <span class="font-medium"> {{product.price | currency: "EGP"  }} </span> </h4>
+                        <h4 class="text-main text-xl my-1">Price<b>:</b> <span class="font-medium"> {{product.price | currency: "EGP "  }} </span> </h4>
                         <button (click)="removeItem(product.product.id)" class="remove shadow hover:shadow-md duration-500 font-medium border rounded-md px-5 py-2"> <i class="fa-regular fa-trash-can px-1"></i> Remove</button>
                     </div>
                     
@@ -34,13 +33,12 @@
                         <button (click)="updateItem(product.product.id, product.count - 1)" class="text-main text-3xl"><i class="fa-regular fa-square-minus hover:scale-105 duration-500 "></i></button>
                     </div>
         
-                </div>
-        
-            </div>
-    
-        }
+                </div>    
+                
+            }
+        </div>
 
-        <button class="btn-main my-1" [routerLink]="['/checkout', cartDetails._id]">CheckOut</button>
+        <a class="btn-main my-1 inline-block" [routerLink]="['/checkout', cartDetails._id]">CheckOut</a>
 
     </section>
 }@else {

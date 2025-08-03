@@ -12,22 +12,25 @@
             <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone<b>:</b></label>
             <input formControlName="phone" type="tel" id="phone" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
         </div>
-        
+
         <div class="mb-1">
             <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City<b>:</b></label>
             <input formControlName="city" type="text" id="city" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">
         </div>
-        <div class="text-center flex gap-x-3">
-            <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> <i class="fa-solid fa-credit-card mx-1"></i> Pay
+        <div class="pay">
+            
+            <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> <i class="fa-solid fa-credit-card mx-1"></i> Payment
                 @if (isvalid) {
                     <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>
                 }
             </button>
-            <!-- <button (click)="selectedMethod = 'cash' " type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> Cash Pay
+
+            <!-- <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> Cash Payment
                 @if (isvalid) {
                     <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>
                 }
             </button> -->
+        
         </div>
         
     </form>

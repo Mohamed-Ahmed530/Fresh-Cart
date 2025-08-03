@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { OrdersService } from '../../core/services/orders/orders.service';
-import { BlobOptions } from 'buffer';
 
 @Component({
   selector: 'app-checkout',
@@ -12,19 +11,32 @@ import { BlobOptions } from 'buffer';
 })
 export class CheckoutComponent implements OnInit  {
 
-  private readonly formBuilder = inject( FormBuilder )
   private readonly activatedRoute = inject(ActivatedRoute)
   private readonly ordersService = inject(OrdersService)
+  private readonly formBuilder = inject( FormBuilder )
 
   checkOutForm!: FormGroup ;
-
-  cartId:string = "";
+  cartId!:string;
+  isvalid:boolean = false
 
   ngOnInit(): void {
-    this.initForm();
     this.getCartId();
+    this.initForm();
   }
   
+  
+  getCartId (){
+
+    // this.cartId = this.activatedRoute.snapshot.params['cartId']
+
+    this.activatedRoute.paramMap.subscribe({
+      next:(param)=>{
+        this.cartId =  param.get("id")!
+      }
+    })
+  }
+
+
 
   initForm(){
     this.checkOutForm = this.formBuilder.group({
@@ -34,35 +46,32 @@ export class CheckoutComponent implements OnInit  {
     })
   }
 
-  getCartId (){
-    this.activatedRoute.paramMap.subscribe({
-      next:(param)=>{
-        this.cartId =  param.get("id")!
-      }
-    })
-  }
 
-  isvalid:boolean = false
 
-  submitForm(){
+  submitForm() {
+    // onLine
     if (this.checkOutForm.valid) {
-      this.ordersService.chechOutPaymennt(this.cartId, this.checkOutForm.value).subscribe({
+      this.ordersService.onlinePaymennt(this.cartId, this.checkOutForm.value).subscribe({
         next:(res)=>{
-
           setTimeout(()=>{
             if (res.status === "success") {
               open(res.session.url, "_self")
             }
           },1000)
-          this.isvalid = true
+          this.isvalid = true;
           },error:(err)=>{
-            
-          this.isvalid = false
+          this.isvalid = false;
           }
       })
     }
 
-  
+    // cash
+    // this.ordersService.cashOrder(this.cartId, this.checkOutForm.value).subscribe({
+    //   next:(res)=>{
+    //     // console.log(res);
+    //   }
+    // })
+
   }
 
 }

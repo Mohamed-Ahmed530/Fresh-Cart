@@ -1,12 +1,13 @@
 import { ToastrService } from 'ngx-toastr';
 import { Component, inject, OnInit } from '@angular/core';
 import { WishListService } from '../../core/services/wishList/wish-list.service';
-import { IWishlist } from '../../shared/interFaces/iwishlist';
 import { CartService } from '../../core/services/cart/cart.service';
+import { IWishlist } from '../../shared/interFaces/Iwishlist';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-wishlist',
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.scss'
 })

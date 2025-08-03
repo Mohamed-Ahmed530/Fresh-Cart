@@ -1,44 +1,90 @@
 @if (detailsProduct) {
     <section>
 
-        <h1 class="center text-4xl font-medium my-8 text-main">Details Product:</h1>
-        <div class="grid sm:grid-cols-1 md:grid-cols-[minmax(0,1fr)_70%] items-center gap-5">
-            <div class="grid sm:grid-cols-1 overflow-hidden rounded-md">
-                <owl-carousel-o [options]="customOptions">
-        
-                    @for (pr of detailsProduct.images ; track pr) {
-                        <ng-template carouselSlide >
-                            <div>
-                                <img [src]="pr" class="w-full h-[400px] object-contain hover:scale-105 duration-500" [alt]="detailsProduct.title">
-                            </div>
-                        </ng-template>
-                    }
-            
-                </owl-carousel-o>
-            </div>
-            <div>
-                
-                <h2 class="text-2xl"> {{detailsProduct.title}} </h2>
-                <p class="text-gray-500 my-2"> {{detailsProduct.description}} </p>
-                <div class="flex justify-between items-center my-2">
-                    <h3 class="text-2xl"> {{detailsProduct.category.name}} </h3>
-                    <span (click)="addToWishList(detailsProduct.id)" class="hart cursor-pointer"> <i class="fa-solid fa-heart-circle-plus text-2xl"></i> </span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="my-1 font-medium"> {{  detailsProduct.price | currency:"EGP" }} </span>
-                    <div class="flex items-center">
-                        @for (num of [1,2,3,4,5].slice(0 , detailsProduct.ratingsAverage) ;track $index  ) {
-                            <i class="fas fa-star rating-color"></i>
-                        }
-                        @if (detailsProduct.ratingsAverage % 1 !== 0 ) {
-                            <i class="fa-solid fa-star-half-stroke rating-color"></i>
-                        }
-                        <span class="text-gray-500"> {{detailsProduct.ratingsAverage}} </span>
-                    </div>
-                </div>
-                <button (click)="addToCart(detailsProduct.id)" class="btn-main my-2 w-full mx-auto block"> <i class="fa-solid fa-cart-plus mx-1"></i> Add To Cart</button>
-            </div>
-        </div>
+    <h1 class="text-4xl font-medium my-8 text-main">Details Product:</h1>
+    <div class="grid sm:grid-cols-1 md:grid-cols-[minmax(0,1fr)_70%] items-center gap-5">
+        <div class="grid sm:grid-cols-1 overflow-hidden rounded-md">
+            <owl-carousel-o [options]="customOptions">
     
+                @for (srs of detailsProduct.images ; track $index) {
+                    <ng-template carouselSlide >
+                        <div>
+                            <img [src]="srs" class="w-full h-[400px] object-contain hover:scale-105 duration-500" [alt]="detailsProduct.title">
+                        </div>
+                    </ng-template>
+                }
+        
+            </owl-carousel-o>
+        </div>
+        <div>
+            <h2 class="text-2xl"> {{detailsProduct.title}} </h2>
+            <p class="text-gray-500 my-2"> {{detailsProduct.description}} </p>
+            <div class="flex justify-between items-center my-2">
+                <h3 class="text-2xl"> {{detailsProduct.category.name}} </h3>
+                <span (click)="addToWishList(detailsProduct.id)" class="hart cursor-pointer"> <i class="fa-solid fa-heart-circle-plus text-2xl"></i> </span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="my-1 font-medium"> {{  detailsProduct.price | currency:"EGP " }} </span>
+                <div class="flex items-center">
+                    @for (num of [1,2,3,4,5].slice(0 , detailsProduct.ratingsAverage) ;track $index  ) {
+                        <i class="fas fa-star rating-color"></i>
+                    }
+                    @if (detailsProduct.ratingsAverage % 1 !== 0 ) {
+                        <i class="fa-solid fa-star-half-stroke rating-color"></i>
+                    }
+                    <span class="text-gray-500"> {{detailsProduct.ratingsAverage}} </span>
+                </div>
+            </div>
+            <button (click)="addToCart(detailsProduct.id)" class="btn-main my-2 w-full mx-auto block"> <i class="fa-solid fa-cart-plus mx-1"></i> Add To Cart</button>
+        </div>
+    </div>
+
     </section>
+
+    @defer (on idle) {
+
+        <section class="py-5">
+            <h2 class="text-4xl font-medium my-8 text-main">Related Products:</h2>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    
+                @for (product of relatedProducts ; track product.id) {
+                    <div class="card product shadow-lg relative">
+                        <div>
+                            <a [routerLink]="['/details', product.id]" class="card-img cursor-pointer">
+                                <img [src]="product.imageCover" class="w-full h-[250px] object-contain" [alt]="product.title" />
+                            </a>
+                            <div class="card-body px-2 py-3">
+                                <div class="my-1">
+                                    <h4 class=""> {{product.category.name}} </h4>
+                                </div>
+                                
+                                <div class="flex justify-between items-center my-2">
+                                    <h3 class="text-2xl"> {{product.title | termText: 1}} </h3>
+                                    <span (click)="addToWishList(product.id)" class="hart cursor-pointer"> <i class="fa-solid fa-heart-circle-plus text-2xl"></i> </span>
+                                </div>
+    
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium"> {{ product.price | currency:"EGP " }} </span>
+                                
+                                    <div class="flex items-center">
+                                        @for (num of [1,2,3,4,5].slice(0 , product.ratingsAverage) ;track $index  ) {
+                                            <i class="fas fa-star rating-color"></i>
+                                        }
+                                            @if (product.ratingsAverage % 1 !== 0 ) {
+                                            <i class="fa-solid fa-star-half-stroke rating-color"></i>
+                                        }
+                                        <span class="text-gray-500"> {{product.ratingsAverage}} </span>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        <button (click)="addToCart(product.id)" class="btn-main mb-1 w-[90%] mx-auto block"> <i class="fa-solid fa-cart-plus mx-1"></i> Add To Cart</button>
+                    </div>
+                }
+    
+            </div>
+        </section>
+    }
+    
 }
