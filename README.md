@@ -44,7 +44,7 @@
 
 Feel free to reach out for feedback or collaboration:\
 **Email:** [mohamed.ahmed.fe1@gmail.com](mohamed.ahmed.fe1@gmail.com)\
-**LinkedIn:** [mohamed-ahmed-fe](linkedin.com/in/mohamed-ahmed-fe)
+**LinkedIn:** [mohamed-ahmed-fe](https://www.linkedin.com/in/mohamed-ahmed-fe/)
 
 ---
 
