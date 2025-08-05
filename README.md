@@ -23,14 +23,14 @@
 
 - **Framework:** Angular, TypeScript
 - **UI Styling:** Tailwind CSS, Flowbite, Sass, HTML5, CSS3
-- **State & Utilities:** RxJS, Signals, ngx-toastr, SweetAlert2, Angular Spinner Loader
+- **State & Utilities:** RxJS, Pipes, Interceptors, Interfaces, Services, Environments, Guards, Layout ,Signals, ngx-toastr, SweetAlert2, Angular Spinner Loader
 - **APIs:** Integrated external APIs to simulate real-world e-commerce data
 
 ---
 
 ## 🚀 Live Demo
 
-[**View Project Online**]()
+[**View Project Online**](https://fresh-cart-m5d.vercel.app/#/login)
 
 ---
 
@@ -43,8 +43,8 @@
 ## 📬 Contact
 
 Feel free to reach out for feedback or collaboration:\
-**Email:** []()
-**LinkedIn:** []()
+**Email:** [mohamed.ahmed.fe1@gmail.com](mohamed.ahmed.fe1@gmail.com)\
+**LinkedIn:** [mohamed-ahmed-fe](linkedin.com/in/mohamed-ahmed-fe)
 
 ---
 
