@@ -4,7 +4,7 @@
 
     <owl-carousel-o [options]="customOptions">
         
-        @for (category of categories; track category._id) {
+        @for (category of categories(); track category._id) {
             <ng-template carouselSlide >
                 <div>
                     <img [src]="category.image" class="w-full h-[250px]" [alt]="category.name">

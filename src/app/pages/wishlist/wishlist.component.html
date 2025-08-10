@@ -1,13 +1,13 @@
-@if (isLoading) {
+@if (isLoading()) {
     <div class="text-center py-10">
         <p class="text-xl text-gray-500">Loading your Wish List...</p>
     </div>
 }
-@else if (wishListData.count) {
+@else if (wishListData().count) {
     <section class="w-[85%] mx-auto bg-gray-50 p-4 border rounded shadow-md mt-5">
         <h1 class="text-4xl font-medium mb-4 text-center text-main">Wish List</h1>
         
-        @for (wish of wishListData.data; track $index) {
+        @for (wish of wishListData().data; track $index) {
             
             <div class="grid md:grid-cols-[20%_minmax(0,1fr)] my-4 py-2 border-b-2 gap-5">
                 <div class="">

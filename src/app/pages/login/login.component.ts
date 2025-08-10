@@ -12,7 +12,6 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  
   private readonly authService = inject( AuthService )
   private readonly formBuilder = inject( FormBuilder )
   private readonly router = inject( Router )
@@ -28,9 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   msgError:string = "";
   succcess:string = "";
 
-
   togilPassword:boolean = false
-
 
 
   ngOnInit(): void {
@@ -44,8 +41,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       password:[null, [Validators.required, Validators.pattern(/^[A-Z]\w{7,}$/) ]]
     })
   }
-
-
 
 
   submitForm (){
@@ -92,13 +87,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
-
-
   toggle(){
     this.togilPassword = !this.togilPassword
   }
-
-
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

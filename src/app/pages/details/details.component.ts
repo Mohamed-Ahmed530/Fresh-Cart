@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, WritableSignal, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProductsService } from '../../core/services/products/products.service';
 import { CurrencyPipe } from '@angular/common';
@@ -24,8 +24,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private readonly wishListService = inject(WishListService);
   private readonly toastrService = inject(ToastrService);
 
+  
   detailsProduct!:Product;
-  relatedProducts!:Product[];
+  
+  // relatedProducts!:Product[];
+  relatedProducts: WritableSignal<Product[]> = signal([]);
 
   subscription:Subscription = new Subscription()
 
@@ -80,7 +83,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   getRelatedProducts(categoryID:string){
     this.productsService.getAllProducts(categoryID).subscribe({
       next:(res)=>{
-        this.relatedProducts = res.data;
+        this.relatedProducts.set(res.data);
       }
     })
 
@@ -90,11 +93,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
   addToCart(id:string){
     this.cartService.addProductToCart(id).subscribe({
       next:(res)=>{
-    
-      this.cartService.numOfCart.set( res.numOfCartItems ) 
-      if (res.status === "success") {
-        this.toastrService.success(res.message)
-      }
+        this.cartService.numOfCart.set( res.numOfCartItems ) 
+        if (res.status === "success") {
+          this.toastrService.success(res.message)
+        }
       },error:(err)=>{
 
       }

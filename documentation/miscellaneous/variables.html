@@ -305,8 +305,8 @@
     provideRouter(
       routes,
       withViewTransitions(),
-      withInMemoryScrolling({ scrollPositionRestoration: &#x27;top&#x27; }),
-      withHashLocation()
+      withInMemoryScrolling({ scrollPositionRestoration: &#x27;top&#x27; })
+      // withHashLocation()
     ),
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch(), withInterceptors([headersInterceptor, errorsInterceptor, loadingInterceptor]) ),

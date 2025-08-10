@@ -20,7 +20,7 @@
         <div class="pay">
             
             <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> <i class="fa-solid fa-credit-card mx-1"></i> Payment
-                @if (isvalid) {
+                @if (isvalid()) {
                     <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>
                 }
             </button>

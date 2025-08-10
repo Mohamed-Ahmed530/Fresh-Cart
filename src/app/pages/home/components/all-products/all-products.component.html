@@ -2,7 +2,7 @@
 
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-        @for (product of products | search: text ; track product.id) {
+        @for (product of products() | search: text() ; track product.id) {
             <div class="card product shadow-lg relative">
                 <div>
                     <a [routerLink]="['/details', product.id]" class="card-img cursor-pointer">

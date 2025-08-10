@@ -14,7 +14,8 @@ export class CategoriesComponent implements OnInit, OnDestroy {
 
   private readonly categoriesService = inject(CategoriesService)
 
-  categories:Category[] = [];
+  // categories:Category[] = [];
+  categories:WritableSignal<Category[]> = signal([]);
   categoriSubscription:Subscription = new Subscription();
 
   ngOnInit(): void {
@@ -25,7 +26,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   getCategoriesData (){
     this.categoriSubscription = this.categoriesService.getAllCategories().subscribe({
       next:(res)=>{
-        this.categories = res.data;
+        this.categories.set(res.data);
       }
     })
   }
@@ -35,48 +36,5 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.categoriSubscription.unsubscribe();
   }
-
-
-  // ============================================
-
-  //* signals
-  // count1:number= 0;
-
-
-  // changeNumber (){
-
-  //   this.count1 = this.count1 += 1;
-
-  // }
-
-  // Signals========
-
-  //1- update()
-  //2- set()
-  //3- get()   ->  ()
-
-
-  //1- update()
-
-
-  // count2:WritableSignal<number> = signal(0)
-
-
-  //   changeNumber (){
-
-  //   this.count2.update( (value)=> value + 1  )
-
-  // }
-
-  //2- set()
-
-//   name:WritableSignal<string> = signal("M")
-
-
-//   changeString (){
-
-//   this.name.set("A")
-
-// }
 
 }

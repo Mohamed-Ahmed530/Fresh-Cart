@@ -537,13 +537,13 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <i>Type : </i>    <code>WritableSignal&lt;boolean&gt;</code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>false</code>
+                        <i>Default value : </i><code>signal(false)</code>
                     </td>
                 </tr>
                     <tr>
@@ -588,7 +588,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, inject, OnInit, signal, WritableSignal } from &#x27;@angular/core&#x27;;
 import { FormGroup, ReactiveFormsModule, FormBuilder, Validators } from &#x27;@angular/forms&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { OrdersService } from &#x27;../../core/services/orders/orders.service&#x27;;
@@ -607,7 +607,7 @@ export class CheckoutComponent implements OnInit  {
 
   checkOutForm!: FormGroup ;
   cartId!:string;
-  isvalid:boolean &#x3D; false
+  isvalid:WritableSignal&lt;boolean&gt; &#x3D; signal(false)
 
   ngOnInit(): void {
     this.getCartId();
@@ -648,9 +648,9 @@ export class CheckoutComponent implements OnInit  {
               open(res.session.url, &quot;_self&quot;)
             }
           },1000)
-          this.isvalid &#x3D; true;
+          this.isvalid.set(true);
           },error:(err)&#x3D;&gt;{
-          this.isvalid &#x3D; false;
+          this.isvalid.set(false);
           }
       })
     }
@@ -690,7 +690,7 @@ export class CheckoutComponent implements OnInit  {
         &lt;div class&#x3D;&quot;pay&quot;&gt;
             
             &lt;button  type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;checkOutForm.invalid&quot; class&#x3D;&quot;btn-main text-2xl w-full my-2&quot;&gt; &lt;i class&#x3D;&quot;fa-solid fa-credit-card mx-1&quot;&gt;&lt;/i&gt; Payment
-                @if (isvalid) {
+                @if (isvalid()) {
                     &lt;span&gt; &lt;i class&#x3D;&quot;fa fa-spin fa-spinner ms-2&quot;&gt;&lt;/i&gt; &lt;/span&gt;
                 }
             &lt;/button&gt;
@@ -734,7 +734,7 @@ export class CheckoutComponent implements OnInit  {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><section class="w-3/4 mx-auto bg-gray-50 p-4 border rounded shadow-md">    <h1 class="text-4xl font-medium mb-4 text-center text-main">Check Out</h1>    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">        <div class="mb-1">            <label for="details" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Details<b>:</b></label>            <textarea formControlName="details" id="details" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"></textarea>        </div>         <div class="mb-1">            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone<b>:</b></label>            <input formControlName="phone" type="tel" id="phone" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">        </div>        <div class="mb-1">            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City<b>:</b></label>            <input formControlName="city" type="text" id="city" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">        </div>        <div class="pay">                        <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> <i class="fa-solid fa-credit-card mx-1"></i> Payment                @if (isvalid) {                    <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>                }            </button>            <!-- <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> Cash Payment                @if (isvalid) {                    <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>                }            </button> -->                </div>            </form>    </section></div>'
+        var COMPONENT_TEMPLATE = '<div><section class="w-3/4 mx-auto bg-gray-50 p-4 border rounded shadow-md">    <h1 class="text-4xl font-medium mb-4 text-center text-main">Check Out</h1>    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">        <div class="mb-1">            <label for="details" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Details<b>:</b></label>            <textarea formControlName="details" id="details" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"></textarea>        </div>         <div class="mb-1">            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone<b>:</b></label>            <input formControlName="phone" type="tel" id="phone" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">        </div>        <div class="mb-1">            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City<b>:</b></label>            <input formControlName="city" type="text" id="city" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">        </div>        <div class="pay">                        <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> <i class="fa-solid fa-credit-card mx-1"></i> Payment                @if (isvalid()) {                    <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>                }            </button>            <!-- <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> Cash Payment                @if (isvalid) {                    <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>                }            </button> -->                </div>            </form>    </section></div>'
     var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CheckoutComponent'};

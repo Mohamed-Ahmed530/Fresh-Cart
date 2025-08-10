@@ -1,4 +1,4 @@
-@if (allOrders) {
+@if (allOrders()) {
 
     <section class="py-24 relative">
       <div class="w-full max-w-7xl px-4 md:px-5 lg-6 mx-auto">
@@ -13,7 +13,7 @@
           Thanks for making a purchase you can check our order summary frm below
         </p>
 
-        @for (order of allOrders; track $index) {
+        @for (order of allOrders(); track $index) {
           
           <div class="main-box border my-7 border-gray-200 rounded-xl pt-6 max-w-xl max-lg:mx-auto lg:max-w-full">
 

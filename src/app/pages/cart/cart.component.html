@@ -1,19 +1,19 @@
-@if (isLoading) {
+@if (isLoading()) {
     <div class="text-center py-10"> 
         <p class="text-xl text-gray-500">Loading your cart...</p>
     </div>
 }
-@else if (cartDetails.totalCartPrice) {
+@else if (cartDetails().totalCartPrice) {
     <section class="w-[85%] mx-auto bg-gray-50 p-4 border rounded shadow-md mt-5">
         <h1 class="text-4xl font-medium mb-4 text-center text-main">Shop Cart</h1>
     
         <div class="flex justify-between items-center">
-            <p class="text-xl text-main">Total Cart Price<b>:</b> <span class="font-medium"> {{cartDetails.totalCartPrice | currency: "EGP " }} </span>  </p>
+            <p class="text-xl text-main">Total Cart Price<b>:</b> <span class="font-medium"> {{cartDetails().totalCartPrice | currency: "EGP " }} </span>  </p>
             <button (click)="clearItems()" class="py-2 px-5 text-white bg-red-700 rounded-md hover:bg-red-800 duration-500 shadow-md"><i class="fa-regular fa-trash-can"></i> Clear Cart</button>
         </div>
 
         <div class="grid md:grid-cols-[20%_minmax(0,1fr)] my-4 py-2 border-b-2 gap-5">
-        @for (product of cartDetails.products; track product.product.id) {
+        @for (product of cartDetails().products; track product.product.id) {
     
                 <div class="">
                     <img [src]="product.product.imageCover" class="w-full" [alt]="product.product.title">
@@ -38,7 +38,7 @@
             }
         </div>
 
-        <a class="btn-main my-1 inline-block" [routerLink]="['/checkout', cartDetails._id]">CheckOut</a>
+        <a class="btn-main my-1 inline-block" [routerLink]="['/checkout', cartDetails()._id]">CheckOut</a>
 
     </section>
 }@else {

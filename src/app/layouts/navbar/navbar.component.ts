@@ -15,6 +15,10 @@ export class NavbarComponent implements OnInit {
 
   private readonly authService = inject(AuthService)
 
+  
+  counterofCar:Signal<number> = computed( ()=>  this.cartService.numOfCart()  )
+
+  
   // @Input() isLogin: boolean = true;
   isLogin = input<boolean>(true); 
   
@@ -42,11 +46,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  // ====
-  
-  counterofCar:Signal<number> = computed( ()=>  this.cartService.numOfCart()  )
 
-  
   // ========== LogOut ==========
   logOut(){
   this.authService.logOutUser();

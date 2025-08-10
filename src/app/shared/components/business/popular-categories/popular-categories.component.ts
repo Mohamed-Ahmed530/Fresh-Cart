@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { CategoriesService } from '../../../../core/services/categories/categories.service';
 import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,8 @@ import { Category } from '../../../interFaces/Category';
 export class PopularCategoriesComponent implements OnInit, OnDestroy {
     private readonly categoriesService = inject(CategoriesService);
 
-    categories: Category[] = [];
+    // categories: Category[] = [];
+    categories: WritableSignal<Category[]> = signal([]);
     
     categorySubscription: Subscription = new Subscription();
 
@@ -56,7 +57,7 @@ export class PopularCategoriesComponent implements OnInit, OnDestroy {
     getCategoriesData() {
         this.categorySubscription = this.categoriesService.getAllCategories().subscribe({
             next: (res) => {
-            this.categories = res.data;
+            this.categories.set(res.data);
             },
         });
     }

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { OrdersService } from '../../core/services/orders/orders.service';
@@ -17,7 +17,7 @@ export class CheckoutComponent implements OnInit  {
 
   checkOutForm!: FormGroup ;
   cartId!:string;
-  isvalid:boolean = false
+  isvalid:WritableSignal<boolean> = signal(false)
 
   ngOnInit(): void {
     this.getCartId();
@@ -58,9 +58,9 @@ export class CheckoutComponent implements OnInit  {
               open(res.session.url, "_self")
             }
           },1000)
-          this.isvalid = true;
+          this.isvalid.set(true);
           },error:(err)=>{
-          this.isvalid = false;
+          this.isvalid.set(false);
           }
       })
     }

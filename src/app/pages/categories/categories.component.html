@@ -4,7 +4,7 @@
 
     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
 
-        @for (category of categories; track category._id) {
+        @for (category of categories(); track category._id) {
             <div class="card product shadow-lg relative">
                 <div>
                     <div class="card-img cursor-pointer">
@@ -19,34 +19,5 @@
         }
 
     </div>
-
-    <!-- =================================================================================== -->
-    <!-- <hr class="my-10" /> -->
-
-    <!-- <div class="testSignal"> -->
-
-
-        <!-- <p>Number: {{count1}} </p>
     
-        <button class="bg-red-500 px-5 py-2 rounder hover:bg-red-900 rounded-md" (click)="changeNumber()">Change Number</button> -->
-    
-        <!--1- Signals================================================================================================================== -->
-    
-        <!-- update() -->
-        <!-- <p>Number: {{count2()}} </p>
-    
-        <button class="bg-red-500 px-5 py-2 rounder hover:bg-red-900 rounded-md" (click)="changeNumber()">Change Number</button> -->
-    
-    
-        <!--2- set() -->
-        
-        <!-- <p>Number: {{name()}} </p>
-    
-        <button class="bg-red-500 px-5 py-2 rounder hover:bg-red-900 rounded-md" (click)="changeString()">Change Name</button> -->
-    
-
-    <!-- </div>     -->
-
-    
-
 </section>
