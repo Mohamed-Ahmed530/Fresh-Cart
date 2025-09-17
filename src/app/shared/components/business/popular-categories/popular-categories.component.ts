@@ -29,6 +29,7 @@ export class PopularCategoriesComponent implements OnInit, OnDestroy {
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
         navSpeed: 700,
+        margin:20,
         navText: [
         '<i class="fa-solid fa-arrow-left text-green-500"></i>',
         '<i class="fa-solid fa-arrow-right text-green-500"></i>',

@@ -156,6 +156,7 @@
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
                             <code>ReactiveFormsModule</code>
+                                <code><a href="../components/ErrorMessageComponent.html" target="_self" >ErrorMessageComponent</a></code>
                 </td>
             </tr>
 
@@ -321,8 +322,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/pages/checkout/checkout.component.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/pages/checkout/checkout.component.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -358,8 +359,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">src/app/pages/checkout/checkout.component.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">src/app/pages/checkout/checkout.component.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -395,8 +396,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">src/app/pages/checkout/checkout.component.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/pages/checkout/checkout.component.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -438,7 +439,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -464,7 +465,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -490,7 +491,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -517,7 +518,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -548,7 +549,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -575,7 +576,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/pages/checkout/checkout.component.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -592,10 +593,11 @@
 import { FormGroup, ReactiveFormsModule, FormBuilder, Validators } from &#x27;@angular/forms&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { OrdersService } from &#x27;../../core/services/orders/orders.service&#x27;;
+import { ErrorMessageComponent } from &quot;../../shared/components/ui/error-message/error-message.component&quot;;
 
 @Component({
   selector: &#x27;app-checkout&#x27;,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ErrorMessageComponent],
   templateUrl: &#x27;./checkout.component.html&#x27;,
   styleUrl: &#x27;./checkout.component.scss&#x27;
 })
@@ -605,7 +607,7 @@ export class CheckoutComponent implements OnInit  {
   private readonly ordersService &#x3D; inject(OrdersService)
   private readonly formBuilder &#x3D; inject( FormBuilder )
 
-  checkOutForm!: FormGroup ;
+  checkOutForm!: FormGroup;
   cartId!:string;
   isvalid:WritableSignal&lt;boolean&gt; &#x3D; signal(false)
 
@@ -613,7 +615,6 @@ export class CheckoutComponent implements OnInit  {
     this.getCartId();
     this.initForm();
   }
-  
   
   getCartId (){
 
@@ -627,7 +628,6 @@ export class CheckoutComponent implements OnInit  {
   }
 
 
-
   initForm(){
     this.checkOutForm &#x3D; this.formBuilder.group({
       details:[null, [Validators.required]],
@@ -636,8 +636,7 @@ export class CheckoutComponent implements OnInit  {
     })
   }
 
-
-
+  
   submitForm() {
     // onLine
     if (this.checkOutForm.valid) {
@@ -676,17 +675,30 @@ export class CheckoutComponent implements OnInit  {
         &lt;div class&#x3D;&quot;mb-1&quot;&gt;
             &lt;label for&#x3D;&quot;details&quot; class&#x3D;&quot;block mb-2 text-sm font-medium text-gray-900 dark:text-white&quot;&gt;Details&lt;b&gt;:&lt;/b&gt;&lt;/label&gt;
             &lt;textarea formControlName&#x3D;&quot;details&quot; id&#x3D;&quot;details&quot; class&#x3D;&quot;bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500&quot;&gt;&lt;/textarea&gt;
+
+            @let detailsControl &#x3D; checkOutForm.get(&#x27;details&#x27;); 
+            &lt;app-error-message [nameControl]&#x3D;&quot;detailsControl&quot;&gt;&lt;/app-error-message&gt;
         &lt;/div&gt; 
 
         &lt;div class&#x3D;&quot;mb-1&quot;&gt;
             &lt;label for&#x3D;&quot;phone&quot; class&#x3D;&quot;block mb-2 text-sm font-medium text-gray-900 dark:text-white&quot;&gt;Phone&lt;b&gt;:&lt;/b&gt;&lt;/label&gt;
             &lt;input formControlName&#x3D;&quot;phone&quot; type&#x3D;&quot;tel&quot; id&#x3D;&quot;phone&quot; class&#x3D;&quot;bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500&quot;&gt;
+            
+            @let phoneControl &#x3D; checkOutForm.get(&#x27;phone&#x27;); 
+            &lt;app-error-message [nameControl]&#x3D;&quot;phoneControl&quot;&gt;&lt;/app-error-message&gt;
+
         &lt;/div&gt;
 
         &lt;div class&#x3D;&quot;mb-1&quot;&gt;
             &lt;label for&#x3D;&quot;city&quot; class&#x3D;&quot;block mb-2 text-sm font-medium text-gray-900 dark:text-white&quot;&gt;City&lt;b&gt;:&lt;/b&gt;&lt;/label&gt;
             &lt;input formControlName&#x3D;&quot;city&quot; type&#x3D;&quot;text&quot; id&#x3D;&quot;city&quot; class&#x3D;&quot;bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500&quot;&gt;
+        
+            @let cityControl &#x3D; checkOutForm.get(&#x27;city&#x27;); 
+            &lt;app-error-message [nameControl]&#x3D;&quot;cityControl&quot;&gt;&lt;/app-error-message&gt;
+
+
         &lt;/div&gt;
+        
         &lt;div class&#x3D;&quot;pay&quot;&gt;
             
             &lt;button  type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;checkOutForm.invalid&quot; class&#x3D;&quot;btn-main text-2xl w-full my-2&quot;&gt; &lt;i class&#x3D;&quot;fa-solid fa-credit-card mx-1&quot;&gt;&lt;/i&gt; Payment
@@ -734,8 +746,8 @@ export class CheckoutComponent implements OnInit  {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><section class="w-3/4 mx-auto bg-gray-50 p-4 border rounded shadow-md">    <h1 class="text-4xl font-medium mb-4 text-center text-main">Check Out</h1>    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">        <div class="mb-1">            <label for="details" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Details<b>:</b></label>            <textarea formControlName="details" id="details" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"></textarea>        </div>         <div class="mb-1">            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone<b>:</b></label>            <input formControlName="phone" type="tel" id="phone" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">        </div>        <div class="mb-1">            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City<b>:</b></label>            <input formControlName="city" type="text" id="city" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">        </div>        <div class="pay">                        <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> <i class="fa-solid fa-credit-card mx-1"></i> Payment                @if (isvalid()) {                    <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>                }            </button>            <!-- <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> Cash Payment                @if (isvalid) {                    <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>                }            </button> -->                </div>            </form>    </section></div>'
-    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
+        var COMPONENT_TEMPLATE = '<div><section class="w-3/4 mx-auto bg-gray-50 p-4 border rounded shadow-md">    <h1 class="text-4xl font-medium mb-4 text-center text-main">Check Out</h1>    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">        <div class="mb-1">            <label for="details" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Details<b>:</b></label>            <textarea formControlName="details" id="details" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"></textarea>            @let detailsControl = checkOutForm.get(\'details\');             <app-error-message [nameControl]="detailsControl"></app-error-message>        </div>         <div class="mb-1">            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone<b>:</b></label>            <input formControlName="phone" type="tel" id="phone" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">                        @let phoneControl = checkOutForm.get(\'phone\');             <app-error-message [nameControl]="phoneControl"></app-error-message>        </div>        <div class="mb-1">            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City<b>:</b></label>            <input formControlName="city" type="text" id="city" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500">                    @let cityControl = checkOutForm.get(\'city\');             <app-error-message [nameControl]="cityControl"></app-error-message>        </div>                <div class="pay">                        <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> <i class="fa-solid fa-credit-card mx-1"></i> Payment                @if (isvalid()) {                    <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>                }            </button>            <!-- <button  type="submit" [disabled]="checkOutForm.invalid" class="btn-main text-2xl w-full my-2"> Cash Payment                @if (isvalid) {                    <span> <i class="fa fa-spin fa-spinner ms-2"></i> </span>                }            </button> -->                </div>            </form>    </section></div>'
+    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'ErrorMessageComponent', 'selector': 'app-error-message'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductItemComponent', 'selector': 'app-product-item'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CheckoutComponent'};
 </script>

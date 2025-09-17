@@ -7,16 +7,17 @@ import { environment } from '../../environment/environment';
   providedIn: 'root'
 })
 export class ProductsService {
-    // API Logic --- HttpClient
 
     constructor( private httpClient:HttpClient ) { }
 
-    getAllProducts(categoryID?:string):Observable<any>
-    {
+    getAllProducts(pageNumber:number = 1):Observable<any>{
+      return this.httpClient.get(`${environment.baseUrl}/api/v1/products?page=${pageNumber}`)
+    }
+
+    getProducts(categoryID?:string):Observable<any>{
       //* Related Products
-      let url = categoryID? `${environment.baseUrl}/api/v1/products?category[in]=${categoryID}` : "https://ecommerce.routemisr.com/api/v1/products" 
+      let url = categoryID? `${environment.baseUrl}/api/v1/products?category[in]=${categoryID}` : `https://ecommerce.routemisr.com/api/v1/products`;
       return this.httpClient.get(url)
-      // return this.httpClient.get(`${environment.baseUrl}/api/v1/products`)
     }
     
     getSpecificProducts(id:string | null):Observable<any>

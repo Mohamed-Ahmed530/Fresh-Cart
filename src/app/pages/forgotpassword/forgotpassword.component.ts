@@ -1,133 +1,145 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ErrorMessageComponent } from "../../shared/components/ui/error-message/error-message.component";
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-forgotpassword',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ErrorMessageComponent],
   templateUrl: './forgotpassword.component.html',
   styleUrl: './forgotpassword.component.scss'
 })
-export class ForgotpasswordComponent {
+export class ForgotpasswordComponent implements OnInit, OnDestroy {
 
-  private readonly authService = inject(AuthService)
-  private readonly router = inject(Router)
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly formBuilder = inject( FormBuilder );
+
+  verifyEmail!:FormGroup;
+  verifyCode!:FormGroup;
+  resetPassword!:FormGroup;
+
+  togilPassword:boolean = false;
+
+  private destroy$ = new Subject<void>();
 
   step:number = 1;
 
-  isLoading:boolean = false;  //check spinner
-  success:string = "";
-  msgError:string = "";
+  isLoading:boolean = false;  
+  successEmail:WritableSignal<string> = signal("");
+  errorMsgEmail:WritableSignal<string> = signal("");
+  successCode:WritableSignal<string> = signal("");
+  errorMsgCode:WritableSignal<string> = signal("");
+  successPassword:WritableSignal<string> = signal("");
+  errorMsgPassword:WritableSignal<string> = signal("");
 
-  private readonly formBuilder = inject( FormBuilder )
+  ngOnInit(): void {
+      this.initForm();
+  }
 
-
-  verifyEmail:FormGroup = this.formBuilder.group({
-    email:[null, [Validators.required, Validators.email]]
-  })
-
-  verifyCode:FormGroup = this.formBuilder.group({
-    resetCode:[null, [Validators.required, Validators.pattern(/^[0-9]{5}$/)]]
-  })
+  initForm(){
+    this.verifyEmail = this.formBuilder.group({
+      email:[null, [Validators.required, Validators.email]]
+    })
   
-  resetPassword:FormGroup = this.formBuilder.group({
-    email:[null, [Validators.required, Validators.email]],
-    newPassword:[null, [Validators.required, Validators.pattern(/^[A-Z]\w{7,}$/) ]]
-  })
+    this.verifyCode = this.formBuilder.group({
+      resetCode:[null, [Validators.required, Validators.pattern(/^[0-9]{5,6}$/)]]
+    })
+    
+    this.resetPassword = this.formBuilder.group({
+      email:[null, [Validators.required, Validators.email]],
+      newPassword:[null, [Validators.required, Validators.pattern(/^.{6,}$/)]]
+    })
+  }
 
-
-    verifyEmailSubmit(){
-
-      let emailValue = this.verifyEmail.get('email')?.value
-      this.resetPassword.get('email')?.patchValue(emailValue)
-
-      if (this.verifyEmail.valid) {
-        this.isLoading=true;
-          this.authService.setEmailVerify(this.verifyEmail.value).subscribe({
-            next:(res)=>{
-              console.log(res);
-              if (res.statusMsg === 'success') {
-                setTimeout(()=>{
-                  this.step = 2;
-                },1000);
-                this.success = res.message
-              }
-              this.isLoading = false;
-            },error:(err:HttpErrorResponse)=>{
-              console.log(err.error.message);
-              if (err.error.message) {
-                this.msgError = err.error.message;
-              }else{
-                this.msgError = "";
-              }
-              this.isLoading = false;
-            }
-          })
-        }
-        
-      else{
-        this.verifyEmail.markAllAsTouched();
-      }
-    }
-  
-    verifyCodeSubmit(){
-      if (this.verifyCode.valid) {
-        this.isLoading=true;
-        this.authService.setCodeVerify(this.verifyCode.value).subscribe({
+  verifyEmailSubmit(){
+    let emailValue = this.verifyEmail.get('email')?.value
+    this.resetPassword.get('email')?.patchValue(emailValue)
+    if (this.verifyEmail.valid) {
+      this.isLoading=true;
+      this.errorMsgEmail.set("")
+        this.authService.setEmailVerify(this.verifyEmail.value).pipe(takeUntil(this.destroy$)).subscribe({
           next:(res)=>{
-            console.log(res);
-            if (res.status === 'Success') {
+            if (res.statusMsg === 'success') {
               setTimeout(()=>{
-                this.step = 3;
-              },500);
-              this.success = res.message
+                this.step = 2;
+              },1000);
+              this.successEmail.set(res.message);
             }
             this.isLoading = false;
           },error:(err:HttpErrorResponse)=>{
-            console.log(err.error.message);
             if (err.error.message) {
-              this.msgError = err.error.message;
-            }else{
-              this.msgError = "";
+              this.errorMsgEmail.set(err.error.message)
             }
             this.isLoading = false;
           }
         })
-      }else{
-        this.verifyCode.markAllAsTouched();
       }
+    else{
+      this.verifyEmail.markAllAsTouched();
     }
-  
-    resetPasswordSubmit(){
-      if (this.resetPassword.valid) {
-        this.isLoading=true;
-        this.authService.setResetPassword(this.resetPassword.value).subscribe({
-          next:(res)=>{
-            console.log(res);
-            localStorage.setItem("token",res.token)
-  
-            this.authService.getUserData()
-  
-            setTimeout(() => {
-            this.router.navigate(['/home'])
-            }, 500);
+  }
 
-            this.isLoading = false;
-          },error:(err:HttpErrorResponse)=>{
-            console.log(err.error.message);
-            if (err.error.message) {
-              this.msgError = err.error.message;
-            }else{
-              this.msgError = "";
-            }
-            this.isLoading = false;
+  verifyCodeSubmit(){
+    if (this.verifyCode.valid) {
+      this.isLoading=true;
+      this.errorMsgCode.set("");
+      this.authService.setCodeVerify(this.verifyCode.value).pipe(takeUntil(this.destroy$)).subscribe({
+        next:(res)=>{
+          if (res.status === 'Success') {
+            setTimeout(()=>{
+              this.step = 3;
+            },500);
+              this.successCode.set(res.message);
           }
-        })
-      }else{
-        this.resetPassword.markAllAsTouched();
-      }
+          this.isLoading = false;
+        },error:(err:HttpErrorResponse)=>{
+          if (err.error.message) {
+            this.errorMsgCode.set(err.error.message);
+          }
+          this.isLoading = false;
+        }
+      })
+    }else{
+      this.verifyCode.markAllAsTouched();
     }
+  }
+
+  resetPasswordSubmit(){
+    if (this.resetPassword.valid) {
+      this.isLoading=true;
+      this.errorMsgPassword.set("");
+      this.authService.setResetPassword(this.resetPassword.value).pipe(takeUntil(this.destroy$)).subscribe({
+        next:(res)=>{
+          localStorage.setItem("token",res.token)
+          this.authService.getUserData()
+          setTimeout(() => {
+          this.router.navigate(['/home'])
+          }, 500);
+          this.successPassword.set(res.message);
+          this.isLoading = false;
+        },error:(err:HttpErrorResponse)=>{
+          if (err.error.message) {
+            this.errorMsgPassword.set(err.error.message);
+          }
+          this.isLoading = false;
+        }
+      })
+    }else{
+      this.resetPassword.markAllAsTouched();
+    }
+  }
+
+  toggle(){
+    this.togilPassword = !this.togilPassword;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
 }

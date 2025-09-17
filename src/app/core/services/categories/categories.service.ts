@@ -15,8 +15,7 @@ export class CategoriesService {
     return this.httpClient.get(`${environment.baseUrl}/api/v1/categories`)
   }
 
-  // ==================
-  // ممكن ال id دا يكون فيه مشكله
+
   getSpecificCategory (id:string):Observable<any>
   {
     return this.httpClient.get(`${environment.baseUrl}/api/v1/categories/${id}`)

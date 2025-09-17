@@ -19,7 +19,6 @@ export class WishListService {
   
 
   
-  
   getProductToWishlist():Observable<any>{
     return this.httpClient.get(`${environment.baseUrl}/api/v1/wishlist`)
   }

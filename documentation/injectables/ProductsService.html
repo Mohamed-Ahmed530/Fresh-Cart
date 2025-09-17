@@ -139,6 +139,9 @@
                                 <a href="#getAllProducts" >getAllProducts</a>
                             </li>
                             <li>
+                                <a href="#getProducts" >getProducts</a>
+                            </li>
+                            <li>
                                 <a href="#getSpecificProducts" >getSpecificProducts</a>
                             </li>
                         </ul>
@@ -220,15 +223,86 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getAllProducts(categoryID?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>getAllProducts(pageNumber: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="14"
-                                    class="link-to-prism">src/app/core/services/products/products.service.ts:14</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="13"
+                                    class="link-to-prism">src/app/core/services/products/products.service.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>pageNumber</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>1</code>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProducts"></a>
+                    <span class="name">
+                        <span ><b>getProducts</b></span>
+                        <a href="#getProducts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProducts(categoryID?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/core/services/products/products.service.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -294,8 +368,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">src/app/core/services/products/products.service.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">src/app/core/services/products/products.service.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -356,16 +430,17 @@ import { environment } from &#x27;../../environment/environment&#x27;;
   providedIn: &#x27;root&#x27;
 })
 export class ProductsService {
-    // API Logic --- HttpClient
 
     constructor( private httpClient:HttpClient ) { }
 
-    getAllProducts(categoryID?:string):Observable&lt;any&gt;
-    {
+    getAllProducts(pageNumber:number &#x3D; 1):Observable&lt;any&gt;{
+      return this.httpClient.get(&#x60;${environment.baseUrl}/api/v1/products?page&#x3D;${pageNumber}&#x60;)
+    }
+
+    getProducts(categoryID?:string):Observable&lt;any&gt;{
       //* Related Products
-      let url &#x3D; categoryID? &#x60;${environment.baseUrl}/api/v1/products?category[in]&#x3D;${categoryID}&#x60; : &quot;https://ecommerce.routemisr.com/api/v1/products&quot; 
+      let url &#x3D; categoryID? &#x60;${environment.baseUrl}/api/v1/products?category[in]&#x3D;${categoryID}&#x60; : &#x60;https://ecommerce.routemisr.com/api/v1/products&#x60;;
       return this.httpClient.get(url)
-      // return this.httpClient.get(&#x60;${environment.baseUrl}/api/v1/products&#x60;)
     }
     
     getSpecificProducts(id:string | null):Observable&lt;any&gt;

@@ -264,8 +264,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/core/services/categories/categories.service.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="19"
+                                    class="link-to-prism">src/app/core/services/categories/categories.service.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -334,8 +334,7 @@ export class CategoriesService {
     return this.httpClient.get(&#x60;${environment.baseUrl}/api/v1/categories&#x60;)
   }
 
-  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
-  // ممكن ال id دا يكون فيه مشكله
+
   getSpecificCategory (id:string):Observable&lt;any&gt;
   {
     return this.httpClient.get(&#x60;${environment.baseUrl}/api/v1/categories/${id}&#x60;)

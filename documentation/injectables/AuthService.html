@@ -205,7 +205,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/core/services/auth/auth.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/core/services/auth/auth.service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -275,8 +275,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:46</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -312,8 +312,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -379,8 +379,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="24"
+                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -446,8 +446,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -513,8 +513,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:58</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -580,8 +580,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/core/services/auth/auth.service.ts:60</a></div>
                         </td>
                     </tr>
 
@@ -651,7 +651,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/core/services/auth/auth.service.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/core/services/auth/auth.service.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -677,7 +677,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/core/services/auth/auth.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/core/services/auth/auth.service.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -704,7 +704,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/core/services/auth/auth.service.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/core/services/auth/auth.service.ts:16</a></div>
                         </td>
                     </tr>
 
@@ -730,7 +730,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/core/services/auth/auth.service.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/core/services/auth/auth.service.ts:19</a></div>
                         </td>
                     </tr>
 
@@ -752,12 +752,16 @@ import { Router } from &#x27;@angular/router&#x27;;
 import { LoginUser, RegisterUser } from &#x27;../../../shared/interFaces/AuthUser&#x27;;
 
 @Injectable({
-  providedIn: &#x27;root&#x27;
+  providedIn: &#x27;root&#x27; 
 })
 export class AuthService {
 
-  private httpClient &#x3D; inject(HttpClient)
   constructor() {}
+  private httpClient &#x3D; inject(HttpClient)
+  private readonly router &#x3D; inject(Router);
+
+  // userData: BehaviorSubject&lt;any&gt; &#x3D; new BehaviorSubject(null)
+  userData: any;
 
   env &#x3D; environment.baseUrl
 
@@ -772,45 +776,35 @@ export class AuthService {
   }
 
 
-  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
-
-  // userData: BehaviorSubject&lt;any&gt; &#x3D; new BehaviorSubject(null)
-  userData: any;
-
+  // Decode The Token
   getUserData():void{
     if(localStorage.getItem(&quot;token&quot;)){
       this.userData &#x3D; jwtDecode(localStorage.getItem(&quot;token&quot;)!);
-      // console.log(this.userData);
     }
-    
   }
 
-  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LogOut &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
-  private readonly router &#x3D; inject(Router)
-
+  // LogOut
   logOutUser():void{
-
     localStorage.removeItem(&quot;token&quot;);
 
     // this.userData.next(null) 
     this.userData &#x3D; &quot;&quot;
 
     this.router.navigate([&quot;/login&quot;]);
-
   }
 
-// Forgot Password
-setEmailVerify(data:object):Observable&lt;any&gt;{
-  return this.httpClient.post(&#x60;${environment.baseUrl}/api/v1/auth/forgotPasswords&#x60;,data)
-}
+  // Forgot Password
+  setEmailVerify(data:object):Observable&lt;any&gt;{
+    return this.httpClient.post(&#x60;${environment.baseUrl}/api/v1/auth/forgotPasswords&#x60;,data)
+  }
 
-setCodeVerify(data:object):Observable&lt;any&gt;{
-  return this.httpClient.post(&#x60;${environment.baseUrl}/api/v1/auth/verifyResetCode&#x60;,data)
-}
+  setCodeVerify(data:object):Observable&lt;any&gt;{
+    return this.httpClient.post(&#x60;${environment.baseUrl}/api/v1/auth/verifyResetCode&#x60;,data)
+  }
 
-setResetPassword(data:object):Observable&lt;any&gt;{
-  return this.httpClient.put(&#x60;${environment.baseUrl}/api/v1/auth/resetPassword&#x60;,data)
-}
+  setResetPassword(data:object):Observable&lt;any&gt;{
+    return this.httpClient.put(&#x60;${environment.baseUrl}/api/v1/auth/resetPassword&#x60;,data)
+  }
 
 }</code></pre>
     </div>

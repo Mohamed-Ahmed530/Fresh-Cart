@@ -146,6 +146,12 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>RouterLink</code>
+                </td>
+            </tr>
 
 
 
@@ -183,10 +189,11 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { RouterLink } from &quot;@angular/router&quot;;
 
 @Component({
   selector: &#x27;app-notfound&#x27;,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: &#x27;./notfound.component.html&#x27;,
   styleUrl: &#x27;./notfound.component.scss&#x27;
 })
@@ -198,8 +205,13 @@ export class NotfoundComponent {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;section&gt;
-    &lt;img src&#x3D;&quot;/images/error.svg&quot; class&#x3D;&quot;mx-auto&quot; alt&#x3D;&quot;NotFound&quot;&gt;
-&lt;/section&gt;</code></pre>
+    &lt;div class&#x3D;&quot;flex flex-col justify-center items-center&quot;&gt;
+        &lt;img src&#x3D;&quot;/images/NotFound.png&quot; class&#x3D;&quot;mx-auto w-[650px] h-[450px]&quot; alt&#x3D;&quot;NotFound&quot;&gt;
+        &lt;h3 class&#x3D;&quot;text-4xl font-bold my-8&quot;&gt;Opps!Page Not Found&lt;/h3&gt;
+        &lt;button routerLink&#x3D;&quot;/home&quot; class&#x3D;&quot;bg-[#00594E]  hover:bg-[#0aad0a] duration-500  py-3 px-8 rounded-lg text-xl text-white&quot;&gt;Back To Home&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
     </div>
 
 
@@ -228,8 +240,8 @@ export class NotfoundComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><section>    <img src="/images/error.svg" class="mx-auto" alt="NotFound"></section></div>'
-    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
+        var COMPONENT_TEMPLATE = '<div><section>    <div class="flex flex-col justify-center items-center">        <img src="/images/NotFound.png" class="mx-auto w-[650px] h-[450px]" alt="NotFound">        <h3 class="text-4xl font-bold my-8">Opps!Page Not Found</h3>        <button routerLink="/home" class="bg-[#00594E]  hover:bg-[#0aad0a] duration-500  py-3 px-8 rounded-lg text-xl text-white">Back To Home</button>    </div></section></div>'
+    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'ErrorMessageComponent', 'selector': 'app-error-message'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductItemComponent', 'selector': 'app-product-item'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NotfoundComponent'};
 </script>

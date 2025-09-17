@@ -331,8 +331,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/app/layouts/navbar/navbar.component.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/layouts/navbar/navbar.component.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -365,8 +365,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">src/app/layouts/navbar/navbar.component.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/layouts/navbar/navbar.component.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -402,8 +402,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="43"
-                                    class="link-to-prism">src/app/layouts/navbar/navbar.component.ts:43</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/layouts/navbar/navbar.component.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -485,8 +485,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/app/layouts/navbar/navbar.component.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/layouts/navbar/navbar.component.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -722,20 +722,12 @@ export class NavbarComponent implements OnInit {
       })
   }
 
-  
   // flowbite
   ngAfterViewInit(): void {
     this.flowbiteService.loadFlowbite((flowbite) &#x3D;&gt; {
       initFlowbite();
     });
   }
-
-
-  // &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; LogOut &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
-  logOut(){
-  this.authService.logOutUser();
-  }
-  
 
   @HostListener(&#x27;window:scroll&#x27;) onscroll() {
     if (window.scrollY &gt; 0) {
@@ -744,7 +736,11 @@ export class NavbarComponent implements OnInit {
       this.scrollp &#x3D; false;
     }
   }
-  
+
+  logOut(){
+  this.authService.logOutUser();
+  }
+
   }</code></pre>
     </div>
 
@@ -774,9 +770,6 @@ export class NavbarComponent implements OnInit {
                         &lt;/li&gt;
                         &lt;li&gt;
                             &lt;a routerLink&#x3D;&quot;/brands&quot; routerLinkActive&#x3D;&quot;text-main border-2 rounded-lg&quot; class&#x3D;&quot;block text-gray-700 py-[7px] px-[15px] text-[18px]&quot; aria-current&#x3D;&quot;page&quot;&gt;brands&lt;/a&gt;
-                        &lt;/li&gt;
-                        &lt;li&gt;
-                            &lt;a routerLink&#x3D;&quot;/allorders&quot; routerLinkActive&#x3D;&quot;text-main border-2 rounded-lg&quot; class&#x3D;&quot;block text-gray-700 py-[7px] px-[15px] text-[18px]&quot; aria-current&#x3D;&quot;page&quot;&gt;orders&lt;/a&gt;
                         &lt;/li&gt;
                     &lt;/ul&gt;
                 }                
@@ -821,10 +814,9 @@ export class NavbarComponent implements OnInit {
                             &lt;/a&gt;
                         &lt;/li&gt;
                         &lt;li&gt;
-                            &lt;a (click)&#x3D;&quot;logOut()&quot; role&#x3D;&quot;button&quot; class&#x3D;&quot;block shadow hover:text-black hover:shadow-md duration-500 font-medium border mx-3 text-gray-700 py-[7px] px-[11px] rounded-md&quot; aria-current&#x3D;&quot;page&quot;&gt; &lt;i class&#x3D;&quot;fa-solid fa-arrow-right-from-bracket&quot;&gt;&lt;/i&gt; logOut &lt;/a&gt;
+                            &lt;a (click)&#x3D;&quot;logOut()&quot; role&#x3D;&quot;button&quot; class&#x3D;&quot;block shadow hover:text-black hover:shadow-md duration-500 font-medium border mx-3 text-gray-700 py-[7px] px-[11px] ml-4 rounded-md&quot; aria-current&#x3D;&quot;page&quot;&gt; &lt;i class&#x3D;&quot;fa-solid fa-arrow-right-from-bracket&quot;&gt;&lt;/i&gt; logOut &lt;/a&gt;
                         &lt;/li&gt;
                     }
-                    
                 &lt;/ul&gt; 
             &lt;/div&gt;
         &lt;/div&gt;
@@ -857,8 +849,8 @@ export class NavbarComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><nav  [class.shadow-xl]="scrollp" [class.py-1]="scrollp" class="bg-gray-100 border-gray-100 dark:bg-gray-900">        <div class="max-w-screen-2xl  flex flex-wrap items-center justify-between mx-auto px-16 py-2">            <a routerLink="/home" class="flex items-center space-x-3 rtl:space-x-reverse">                <img src="/images/freshcart-logo.svg" alt="freshcart-logo">            </a>            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">                <span class="sr-only">Open main menu</span>                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>                </svg>            </button>            <div class="hidden font-medium flex-grow w-full md:flex md:w-auto" id="navbar-default">                @if (isLogin()) {                    <ul class="md:items-center capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">                        <li>                            <a routerLink="/home" routerLinkActive="text-main border-2 rounded-lg" class="block text-gray-700 py-[7px] px-[15px] text-[18px]" aria-current="page">home</a>                        </li>                        <li>                            <a routerLink="/products" routerLinkActive="text-main border-2 rounded-lg" class="block text-gray-700 py-[7px] px-[15px] text-[18px]" aria-current="page">products</a>                        </li>                        <li>                            <a routerLink="/categories" routerLinkActive="text-main border-2 rounded-lg" class="block text-gray-700 py-[7px] px-[15px] text-[18px]" aria-current="page">categories</a>                        </li>                        <li>                            <a routerLink="/brands" routerLinkActive="text-main border-2 rounded-lg" class="block text-gray-700 py-[7px] px-[15px] text-[18px]" aria-current="page">brands</a>                        </li>                        <li>                            <a routerLink="/allorders" routerLinkActive="text-main border-2 rounded-lg" class="block text-gray-700 py-[7px] px-[15px] text-[18px]" aria-current="page">orders</a>                        </li>                    </ul>                }                                <ul class="md:items-center md:justify-center ms-auto capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">                    <li>                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm" >                            <i class="fab fa-facebook text-xl hover:scale-110 duration-300"></i>                        </a>                    </li>                    <li>                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm" >                            <i class="fab fa-instagram text-xl hover:scale-110 duration-300"></i>                        </a>                    </li>                    <li>                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm" >                            <i class="fab fa-twitter text-xl hover:scale-110 duration-300"></i>                        </a>                    </li>                    <li>                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm">                            <i class="fab fa-youtube text-xl hover:scale-110 duration-300"></i>                        </a>                    </li>                    @if ( !isLogin() ) {                        <li>                            <a routerLink="/login" routerLinkActive="btn-main" class="block text-gray-700 py-[7px] px-[11px] rounded-md" aria-current="page"> <i class="fa-solid fa-right-to-bracket"></i> login </a>                        </li>                        <li>                            <a routerLink="/register" routerLinkActive="btn-main" class="block text-gray-700 py-[7px] px-[11px] rounded-md" aria-current="page"> <i class="fa-solid fa-user-plus"></i> register </a>                        </li>                    }                    @else {                        <li>                            <a routerLink="/wishlist" routerLinkActive="text-hart" class="hart block ms-[6px] xl:hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page">  <i class="fa-solid fa-heart text-[28px]"></i>                            </a>                        </li>                        <li>                            <a routerLink="/cart" routerLinkActive="text-main" class="cart block lg:mx-4  xl:hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page"> <i class="fa-solid fa-cart-shopping fa-2x"></i>                                 <span class="inline-flex items-center rounded-2xl bg-green-50 py-[1] px-[5px] text-[18px] font-bold te                                xt-green-700 ring-1  ring-green-600/20 ring-inset absolute top-0 left-8"> {{ counterofCar() }} </span>                            </a>                        </li>                        <li>                            <a (click)="logOut()" role="button" class="block shadow hover:text-black hover:shadow-md duration-500 font-medium border mx-3 text-gray-700 py-[7px] px-[11px] rounded-md" aria-current="page"> <i class="fa-solid fa-arrow-right-from-bracket"></i> logOut </a>                        </li>                    }                                    </ul>             </div>        </div></nav></div>'
-    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
+        var COMPONENT_TEMPLATE = '<div><nav  [class.shadow-xl]="scrollp" [class.py-1]="scrollp" class="bg-gray-100 border-gray-100 dark:bg-gray-900">        <div class="max-w-screen-2xl  flex flex-wrap items-center justify-between mx-auto px-16 py-2">            <a routerLink="/home" class="flex items-center space-x-3 rtl:space-x-reverse">                <img src="/images/freshcart-logo.svg" alt="freshcart-logo">            </a>            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">                <span class="sr-only">Open main menu</span>                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>                </svg>            </button>            <div class="hidden font-medium flex-grow w-full md:flex md:w-auto" id="navbar-default">                @if (isLogin()) {                    <ul class="md:items-center capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">                        <li>                            <a routerLink="/home" routerLinkActive="text-main border-2 rounded-lg" class="block text-gray-700 py-[7px] px-[15px] text-[18px]" aria-current="page">home</a>                        </li>                        <li>                            <a routerLink="/products" routerLinkActive="text-main border-2 rounded-lg" class="block text-gray-700 py-[7px] px-[15px] text-[18px]" aria-current="page">products</a>                        </li>                        <li>                            <a routerLink="/categories" routerLinkActive="text-main border-2 rounded-lg" class="block text-gray-700 py-[7px] px-[15px] text-[18px]" aria-current="page">categories</a>                        </li>                        <li>                            <a routerLink="/brands" routerLinkActive="text-main border-2 rounded-lg" class="block text-gray-700 py-[7px] px-[15px] text-[18px]" aria-current="page">brands</a>                        </li>                    </ul>                }                                <ul class="md:items-center md:justify-center ms-auto capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">                    <li>                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm" >                            <i class="fab fa-facebook text-xl hover:scale-110 duration-300"></i>                        </a>                    </li>                    <li>                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm" >                            <i class="fab fa-instagram text-xl hover:scale-110 duration-300"></i>                        </a>                    </li>                    <li>                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm" >                            <i class="fab fa-twitter text-xl hover:scale-110 duration-300"></i>                        </a>                    </li>                    <li>                        <a class="block hover:text-black cursor-pointer text-gray-700 py-1 px-2 rounded-sm">                            <i class="fab fa-youtube text-xl hover:scale-110 duration-300"></i>                        </a>                    </li>                    @if ( !isLogin() ) {                        <li>                            <a routerLink="/login" routerLinkActive="btn-main" class="block text-gray-700 py-[7px] px-[11px] rounded-md" aria-current="page"> <i class="fa-solid fa-right-to-bracket"></i> login </a>                        </li>                        <li>                            <a routerLink="/register" routerLinkActive="btn-main" class="block text-gray-700 py-[7px] px-[11px] rounded-md" aria-current="page"> <i class="fa-solid fa-user-plus"></i> register </a>                        </li>                    }                    @else {                        <li>                            <a routerLink="/wishlist" routerLinkActive="text-hart" class="hart block ms-[6px] xl:hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page">  <i class="fa-solid fa-heart text-[28px]"></i>                            </a>                        </li>                        <li>                            <a routerLink="/cart" routerLinkActive="text-main" class="cart block lg:mx-4  xl:hover:scale-110 duration-300 text-gray-700 rounded-md relative" aria-current="page"> <i class="fa-solid fa-cart-shopping fa-2x"></i>                                 <span class="inline-flex items-center rounded-2xl bg-green-50 py-[1] px-[5px] text-[18px] font-bold te                                xt-green-700 ring-1  ring-green-600/20 ring-inset absolute top-0 left-8"> {{ counterofCar() }} </span>                            </a>                        </li>                        <li>                            <a (click)="logOut()" role="button" class="block shadow hover:text-black hover:shadow-md duration-500 font-medium border mx-3 text-gray-700 py-[7px] px-[11px] ml-4 rounded-md" aria-current="page"> <i class="fa-solid fa-arrow-right-from-bracket"></i> logOut </a>                        </li>                    }                </ul>             </div>        </div></nav></div>'
+    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'ErrorMessageComponent', 'selector': 'app-error-message'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductItemComponent', 'selector': 'app-product-item'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NavbarComponent'};
 </script>

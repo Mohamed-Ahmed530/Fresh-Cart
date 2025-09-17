@@ -36,7 +36,10 @@
         
     </section>
 }@else {
-    <div>
-        <h2 class="text-4xl font-medium mb-4 text-center text-main">Your Wish List Is Empty</h2>
+    <div class="flex flex-col justify-center items-center">
+        <img src="/images/Empty-WishList.png" class="mx-auto w-[650px] h-[450px]" alt="Empty WishList">
+        <h3 class="text-4xl font-bold">Your Wishlist is empty:(</h3>
+        <p class="text-[#807D7E] my-4">Start adding items to your wishlist!</p>
+        <button routerLink="/products" class="bg-[#00594E]  hover:bg-[#0aad0a] duration-500  py-3 px-8 rounded-lg text-xl text-white">Start Shopping</button>
     </div>
 }

@@ -12,6 +12,10 @@ export class CartService {
 
   private httpClient = inject(HttpClient)
 
+  // numOfCart:BehaviorSubject<number> = new BehaviorSubject(0)
+  numOfCart:WritableSignal<number> = signal(0)
+
+
   addProductToCart(id:string):Observable<any>{
     return this.httpClient.post(`${environment.baseUrl}/api/v1/cart`, 
       {
@@ -40,8 +44,5 @@ export class CartService {
     return this.httpClient.delete(`${environment.baseUrl}/api/v1/cart`)
   }
 
-  // numOfCart:BehaviorSubject<number> = new BehaviorSubject(0)
-
-  numOfCart:WritableSignal<number> = signal(0)
 
 }

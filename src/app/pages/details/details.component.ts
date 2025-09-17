@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, OnDestroy, WritableSignal, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProductsService } from '../../core/services/products/products.service';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../../core/services/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
@@ -9,10 +9,11 @@ import { WishListService } from '../../core/services/wishList/wish-list.service'
 import { Subscription } from 'rxjs';
 import { TermTextPipe } from '../../shared/pipes/term-text.pipe';
 import { Product } from '../../shared/interFaces/Product';
+import { ProductItemComponent } from "../../shared/components/ui/product-item/product-item.component";
 
 @Component({
   selector: 'app-details',
-  imports: [ CurrencyPipe, CarouselModule, RouterLink, TermTextPipe ],
+  imports: [CurrencyPipe, CarouselModule, ProductItemComponent, NgClass],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
@@ -28,7 +29,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
   detailsProduct!:Product;
   
   // relatedProducts!:Product[];
-  relatedProducts: WritableSignal<Product[]> = signal([]);
+  relatedProducts: WritableSignal<Product[]> = signal<Product[]>([]);
+
+  wishList: string[] = [];
 
   subscription:Subscription = new Subscription()
 
@@ -81,12 +84,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   getRelatedProducts(categoryID:string){
-    this.productsService.getAllProducts(categoryID).subscribe({
+    this.productsService.getProducts(categoryID).subscribe({
       next:(res)=>{
         this.relatedProducts.set(res.data);
       }
     })
-
   }
 
 
@@ -107,16 +109,16 @@ export class DetailsComponent implements OnInit, OnDestroy {
   addToWishList(id:string):void{
     this.wishListService.addProductToWishlist(id).subscribe({
       next:(res)=>{
-    
         if (res.status === "success") {
           this.toastrService.success(res.message)
+          this.wishList.push(id);
         }
       },
-      error:(err)=>{
-
-      }
     })
+  }
 
+  isInWishList(id: string): boolean {
+    return this.wishList.includes(id);
   }
 
 

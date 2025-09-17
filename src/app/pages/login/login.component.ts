@@ -1,99 +1,86 @@
-import { Subscription, timer } from 'rxjs';
+import { Subject, takeUntil, timer } from 'rxjs';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
+import { ErrorMessageComponent } from "../../shared/components/ui/error-message/error-message.component";
+import { InputComponent } from "../../shared/components/ui/input/input.component";
+
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, ErrorMessageComponent, InputComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  private readonly authService = inject( AuthService )
-  private readonly formBuilder = inject( FormBuilder )
-  private readonly router = inject( Router )
+  private readonly authService = inject( AuthService );
+  private readonly formBuilder = inject( FormBuilder );
+  private readonly router = inject( Router );
+  loginForm!: FormGroup;
 
-  subscription :Subscription = new Subscription();
-  subscriptionTimer :Subscription = new Subscription();
+  private destroy$ = new Subject<void>();
 
-  loginForm!: FormGroup
-
-
-  isLoading:boolean = false;  //check spinner
-
+  success:string = "";
   msgError:string = "";
-  succcess:string = "";
-
-  togilPassword:boolean = false
+  isCallingApi:boolean = false;
+  togilPassword:boolean = false;
 
 
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
   }
 
 
   initForm(){
     this.loginForm = this.formBuilder.group({
       email:[null, [Validators.required, Validators.email]],
-      password:[null, [Validators.required, Validators.pattern(/^[A-Z]\w{7,}$/) ]]
+      password:[null, [Validators.required, Validators.pattern(/^.{6,}$/)]]
     })
   }
 
 
-  submitForm (){
+  onSubmit (){
     if (this.loginForm.valid) {
-      this.isLoading = true;
-        this.subscription =  this.authService.sendLoginForm(this.loginForm.value).subscribe({
-        next:(res)=>{
-          if(res.message === "success"){  
-            // setTimeout(() => {
-            // //1- save token
-            // localStorage.setItem("token", res.token)
-
-            // //2- call getUserData
-            // this.authService.getUserData()
-
-            // //3- navigate to home
-            //   this.router.navigate(['/home'])
-            // }, 500);
-            this.subscriptionTimer = timer(500).subscribe( ()=>{      // Another way
-            //1- save token
-            localStorage.setItem("token", res.token)
-
-            //2- call getUserData
-            this.authService.getUserData()
-
-            //3- navigate to home
-              this.router.navigate(['/home'])
-            } )
-
-            this.succcess = res.message;
+      this.msgError = "";
+      if (!this.isCallingApi) {
+        this.isCallingApi = true;
+          this.authService.sendLoginForm(this.loginForm.value).pipe(takeUntil(this.destroy$)).subscribe({
+          next:(res)=>{
+            if(res.message === "success"){  
+              timer(500).pipe(takeUntil(this.destroy$)).subscribe( ()=>{
+                localStorage.setItem("token", res.token);
+                this.authService.getUserData();
+                this.router.navigate(['/home'])
+              } )
+              this.success = res.message;
+            }
+            this.isCallingApi = false;
+          },
+          error:(err:HttpErrorResponse)=>{
+            if (err.error.message) {
+              this.msgError =  err.error.message;
+            }else{
+              this.msgError = "";
+            }
+            this.isCallingApi = false;
           }
-          this.isLoading = false;
-        },
-        error:(err:HttpErrorResponse)=>{
-          if (err.error.message) {
-            this.msgError =  err.error.message;
-          }else{
-            this.msgError = "";
-          }
-          this.isLoading = false;
-        }
-      })
+        })
+      }
+    }
+    else{
+      this.loginForm.markAllAsTouched();
     }
   }
 
-
   toggle(){
-    this.togilPassword = !this.togilPassword
+    this.togilPassword = !this.togilPassword;
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-    this.subscriptionTimer.unsubscribe()
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

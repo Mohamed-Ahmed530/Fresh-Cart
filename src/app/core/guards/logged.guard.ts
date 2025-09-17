@@ -10,7 +10,6 @@ export const loggedGuard: CanActivateFn = (route, state) => {
   
   // check Browser or Server
   if (isPlatformBrowser(pLATFORM_ID)) {
-
     if (localStorage.getItem("token") !== null) {
       router.navigate(['/home'])
       return false;

@@ -7,12 +7,16 @@ import { Router } from '@angular/router';
 import { LoginUser, RegisterUser } from '../../../shared/interFaces/AuthUser';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class AuthService {
 
-  private httpClient = inject(HttpClient)
   constructor() {}
+  private httpClient = inject(HttpClient)
+  private readonly router = inject(Router);
+
+  // userData: BehaviorSubject<any> = new BehaviorSubject(null)
+  userData: any;
 
   env = environment.baseUrl
 
@@ -27,44 +31,34 @@ export class AuthService {
   }
 
 
-  // ===========
-
-  // userData: BehaviorSubject<any> = new BehaviorSubject(null)
-  userData: any;
-
+  // Decode The Token
   getUserData():void{
     if(localStorage.getItem("token")){
       this.userData = jwtDecode(localStorage.getItem("token")!);
-      // console.log(this.userData);
     }
-    
   }
 
-  // =========== LogOut ===========
-  private readonly router = inject(Router)
-
+  // LogOut
   logOutUser():void{
-
     localStorage.removeItem("token");
 
     // this.userData.next(null) 
     this.userData = ""
 
     this.router.navigate(["/login"]);
-
   }
 
-// Forgot Password
-setEmailVerify(data:object):Observable<any>{
-  return this.httpClient.post(`${environment.baseUrl}/api/v1/auth/forgotPasswords`,data)
-}
+  // Forgot Password
+  setEmailVerify(data:object):Observable<any>{
+    return this.httpClient.post(`${environment.baseUrl}/api/v1/auth/forgotPasswords`,data)
+  }
 
-setCodeVerify(data:object):Observable<any>{
-  return this.httpClient.post(`${environment.baseUrl}/api/v1/auth/verifyResetCode`,data)
-}
+  setCodeVerify(data:object):Observable<any>{
+    return this.httpClient.post(`${environment.baseUrl}/api/v1/auth/verifyResetCode`,data)
+  }
 
-setResetPassword(data:object):Observable<any>{
-  return this.httpClient.put(`${environment.baseUrl}/api/v1/auth/resetPassword`,data)
-}
+  setResetPassword(data:object):Observable<any>{
+    return this.httpClient.put(`${environment.baseUrl}/api/v1/auth/resetPassword`,data)
+  }
 
 }

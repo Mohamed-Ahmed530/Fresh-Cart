@@ -1,36 +1,93 @@
-.card {
-    button{
-        transform: translateY(100%);
-        transition: all 0.5s;
-        opacity: 0;
-    }
-    &:hover{
-        button{
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
+// pagination
+::ng-deep .my-pagination .ngx-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
 }
 
-.card img {
-    transition: transform 0.5s ease;
-}
-.card:hover img {
-    transform: scale(1.1);
+::ng-deep .my-pagination .ngx-pagination li {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-button i {
-    transition: transform 0.5s ease;
+::ng-deep .my-pagination .ngx-pagination a,
+::ng-deep .my-pagination .ngx-pagination .current {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
-button:hover i{
-    transform: scale(1.2);
+::ng-deep .my-pagination .ngx-pagination a {
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
 }
 
-.hart i {
-    transition: all 0.5s;
+::ng-deep .my-pagination .ngx-pagination a:hover {
+  background: #e6ffe6;
+  color: #0aad0a;
+  border-color: #0aad0a;
 }
 
-.hart:hover {
-    color: red;
+::ng-deep .my-pagination .ngx-pagination .current {
+  background: #0aad0a;
+  color: #fff;
+  border: 1px solid #0aad0a;
+}
+
+
+
+// search-input
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.search-box {
+  position: relative;
+  width: 50%;
+  max-width: 500px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #9ca3af; 
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px 12px 46px; 
+  font-size: 15px;
+  color: #333;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  background-color: #fff;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.search-input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.25);
+  outline: none;
+  background-color: #fff;
+}
+
+.search-input:hover {
+  box-shadow: 0 5px 12px rgba(0,0,0,0.12);
 }

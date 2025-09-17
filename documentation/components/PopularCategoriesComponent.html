@@ -272,8 +272,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/app/shared/components/business/popular-categories/popular-categories.component.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/shared/components/business/popular-categories/popular-categories.component.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -309,8 +309,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/app/shared/components/business/popular-categories/popular-categories.component.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/shared/components/business/popular-categories/popular-categories.component.ts:66</a></div>
                         </td>
                     </tr>
 
@@ -346,8 +346,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/shared/components/business/popular-categories/popular-categories.component.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/shared/components/business/popular-categories/popular-categories.component.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -487,6 +487,7 @@
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
         navSpeed: 700,
+        margin:20,
         navText: [
         &#x27;&lt;i class&#x3D;&quot;fa-solid fa-arrow-left text-green-500&quot;&gt;&lt;/i&gt;&#x27;,
         &#x27;&lt;i class&#x3D;&quot;fa-solid fa-arrow-right text-green-500&quot;&gt;&lt;/i&gt;&#x27;,
@@ -555,6 +556,7 @@ export class PopularCategoriesComponent implements OnInit, OnDestroy {
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
         navSpeed: 700,
+        margin:20,
         navText: [
         &#x27;&lt;i class&#x3D;&quot;fa-solid fa-arrow-left text-green-500&quot;&gt;&lt;/i&gt;&#x27;,
         &#x27;&lt;i class&#x3D;&quot;fa-solid fa-arrow-right text-green-500&quot;&gt;&lt;/i&gt;&#x27;,
@@ -605,7 +607,7 @@ export class PopularCategoriesComponent implements OnInit, OnDestroy {
         @for (category of categories(); track category._id) {
             &lt;ng-template carouselSlide &gt;
                 &lt;div&gt;
-                    &lt;img [src]&#x3D;&quot;category.image&quot; class&#x3D;&quot;w-full h-[250px]&quot; [alt]&#x3D;&quot;category.name&quot;&gt;
+                    &lt;img [src]&#x3D;&quot;category.image&quot; class&#x3D;&quot;w-full h-[250px] rounded-md shadow-md duration-500 cursor-pointer&quot; [alt]&#x3D;&quot;category.name&quot;&gt;
                     &lt;h3 class&#x3D;&quot;text-green-500&quot;&gt; {{category.name}} &lt;/h3&gt;
                 &lt;/div&gt;
             &lt;/ng-template&gt;
@@ -642,8 +644,8 @@ export class PopularCategoriesComponent implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><section class="py-5">    <h2 class="text-4xl mb-4 font-medium text-main">Popular Categories<b>:</b></h2>    <owl-carousel-o [options]="customOptions">                @for (category of categories(); track category._id) {            <ng-template carouselSlide >                <div>                    <img [src]="category.image" class="w-full h-[250px]" [alt]="category.name">                    <h3 class="text-green-500"> {{category.name}} </h3>                </div>            </ng-template>        }       </owl-carousel-o></section> </div>'
-    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
+        var COMPONENT_TEMPLATE = '<div><section class="py-5">    <h2 class="text-4xl mb-4 font-medium text-main">Popular Categories<b>:</b></h2>    <owl-carousel-o [options]="customOptions">                @for (category of categories(); track category._id) {            <ng-template carouselSlide >                <div>                    <img [src]="category.image" class="w-full h-[250px] rounded-md shadow-md duration-500 cursor-pointer" [alt]="category.name">                    <h3 class="text-green-500"> {{category.name}} </h3>                </div>            </ng-template>        }       </owl-carousel-o></section> </div>'
+    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'ErrorMessageComponent', 'selector': 'app-error-message'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductItemComponent', 'selector': 'app-product-item'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PopularCategoriesComponent'};
 </script>

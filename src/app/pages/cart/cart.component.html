@@ -42,7 +42,10 @@
 
     </section>
 }@else {
-    <div>
-        <h2 class="text-4xl font-medium mb-4 text-center text-main">Your Cart Is Empty</h2>
+    <div class="flex flex-col justify-center items-center">
+        <img src="/images/EmptyCart.png" class="mx-auto w-[650px] h-[450px]" alt="EmptyCart">
+        <h3 class="text-4xl font-bold">Your Cart is empty:(</h3>
+        <p class="text-[#807D7E] my-4">Add something to make it happy!</p>
+        <button routerLink="/products" class="bg-[#00594E] hover:bg-[#0aad0a] duration-500  py-3 px-8 rounded-lg text-xl text-white">Continue Shopping</button>
     </div>
 }

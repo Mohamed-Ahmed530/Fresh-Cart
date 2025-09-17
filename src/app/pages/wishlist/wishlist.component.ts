@@ -10,10 +10,11 @@ import { WishListService } from '../../core/services/wishList/wish-list.service'
 import { CartService } from '../../core/services/cart/cart.service';
 import { Wishlist } from '../../shared/interFaces/Wishlist';
 import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-wishlist',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.scss',
 })

@@ -81,6 +81,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="components/DetailsComponent.html" data-type="entity-link" >DetailsComponent</a>
                             </li>
                             <li class="link">
+                                <a href="components/ErrorMessageComponent.html" data-type="entity-link" >ErrorMessageComponent</a>
+                            </li>
+                            <li class="link">
                                 <a href="components/FooterComponent.html" data-type="entity-link" >FooterComponent</a>
                             </li>
                             <li class="link">
@@ -88,6 +91,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="components/HomeComponent.html" data-type="entity-link" >HomeComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/InputComponent.html" data-type="entity-link" >InputComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/LoginComponent.html" data-type="entity-link" >LoginComponent</a>
@@ -106,6 +112,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="components/PopularCategoriesComponent.html" data-type="entity-link" >PopularCategoriesComponent</a>
+                            </li>
+                            <li class="link">
+                                <a href="components/ProductItemComponent.html" data-type="entity-link" >ProductItemComponent</a>
                             </li>
                             <li class="link">
                                 <a href="components/ProductsComponent.html" data-type="entity-link" >ProductsComponent</a>

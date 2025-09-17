@@ -156,6 +156,7 @@
                 <td class="col-md-3">imports</td>
                 <td class="col-md-9">
                             <code>CurrencyPipe</code>
+                            <code>RouterLink</code>
                 </td>
             </tr>
 
@@ -281,8 +282,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -348,8 +349,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -385,8 +386,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -422,8 +423,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:50</a></div>
                         </td>
                     </tr>
 
@@ -495,7 +496,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -526,7 +527,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -553,7 +554,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -584,7 +585,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:30</a></div>
                         </td>
                     </tr>
 
@@ -611,7 +612,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/wishlist/wishlist.component.ts:22</a></div>
                         </td>
                     </tr>
 
@@ -636,10 +637,11 @@ import { WishListService } from &#x27;../../core/services/wishList/wish-list.ser
 import { CartService } from &#x27;../../core/services/cart/cart.service&#x27;;
 import { Wishlist } from &#x27;../../shared/interFaces/Wishlist&#x27;;
 import { CurrencyPipe } from &#x27;@angular/common&#x27;;
+import { RouterLink } from &quot;@angular/router&quot;;
 
 @Component({
   selector: &#x27;app-wishlist&#x27;,
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: &#x27;./wishlist.component.html&#x27;,
   styleUrl: &#x27;./wishlist.component.scss&#x27;,
 })
@@ -738,8 +740,11 @@ export class WishlistComponent implements OnInit {
         
     &lt;/section&gt;
 }@else {
-    &lt;div&gt;
-        &lt;h2 class&#x3D;&quot;text-4xl font-medium mb-4 text-center text-main&quot;&gt;Your Wish List Is Empty&lt;/h2&gt;
+    &lt;div class&#x3D;&quot;flex flex-col justify-center items-center&quot;&gt;
+        &lt;img src&#x3D;&quot;/images/Empty-WishList.png&quot; class&#x3D;&quot;mx-auto w-[650px] h-[450px]&quot; alt&#x3D;&quot;Empty WishList&quot;&gt;
+        &lt;h3 class&#x3D;&quot;text-4xl font-bold&quot;&gt;Your Wishlist is empty:(&lt;/h3&gt;
+        &lt;p class&#x3D;&quot;text-[#807D7E] my-4&quot;&gt;Start adding items to your wishlist!&lt;/p&gt;
+        &lt;button routerLink&#x3D;&quot;/products&quot; class&#x3D;&quot;bg-[#00594E]  hover:bg-[#0aad0a] duration-500  py-3 px-8 rounded-lg text-xl text-white&quot;&gt;Start Shopping&lt;/button&gt;
     &lt;/div&gt;
 }</code></pre>
     </div>
@@ -770,8 +775,8 @@ export class WishlistComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>@if (isLoading()) {    <div class="text-center py-10">        <p class="text-xl text-gray-500">Loading your Wish List...</p>    </div>}@else if (wishListData().count) {    <section class="w-[85%] mx-auto bg-gray-50 p-4 border rounded shadow-md mt-5">        <h1 class="text-4xl font-medium mb-4 text-center text-main">Wish List</h1>                @for (wish of wishListData().data; track $index) {                        <div class="grid md:grid-cols-[20%_minmax(0,1fr)] my-4 py-2 border-b-2 gap-5">                <div class="">                    <img [src]="wish.imageCover" class="w-full" [alt]="wish.title">                </div>                         <div class="flex justify-between items-center gap-5">                            <div class="">                        <h4 class="text-xl my-1">Date<b>:</b> <span class="font-medium"> {{wish.updatedAt}} </span> </h4>                        <h3 class="text-xl">Title<b>:</b> {{wish.title}} </h3>                        <h4 class="text-main text-xl my-1">Price<b>:</b> <span class="font-medium"> {{wish.price | currency: "EGP " }} </span> </h4>                    </div>                                        <div class="flex flex-col-reverse gap-4">                        <button (click)="removeItem(wish.id)" class="hart text-2xl"> <i class="fa-solid fa-heart-circle-minus"></i> </button>                        <button (click)="addToCart(wish.id)" class="cart text-2xl me-1"> <i class="fa-solid fa-cart-plus"></i> </button>                                            </div>                        </div>                    </div>        }            </section>}@else {    <div>        <h2 class="text-4xl font-medium mb-4 text-center text-main">Your Wish List Is Empty</h2>    </div>}</div>'
-    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
+        var COMPONENT_TEMPLATE = '<div>@if (isLoading()) {    <div class="text-center py-10">        <p class="text-xl text-gray-500">Loading your Wish List...</p>    </div>}@else if (wishListData().count) {    <section class="w-[85%] mx-auto bg-gray-50 p-4 border rounded shadow-md mt-5">        <h1 class="text-4xl font-medium mb-4 text-center text-main">Wish List</h1>                @for (wish of wishListData().data; track $index) {                        <div class="grid md:grid-cols-[20%_minmax(0,1fr)] my-4 py-2 border-b-2 gap-5">                <div class="">                    <img [src]="wish.imageCover" class="w-full" [alt]="wish.title">                </div>                         <div class="flex justify-between items-center gap-5">                            <div class="">                        <h4 class="text-xl my-1">Date<b>:</b> <span class="font-medium"> {{wish.updatedAt}} </span> </h4>                        <h3 class="text-xl">Title<b>:</b> {{wish.title}} </h3>                        <h4 class="text-main text-xl my-1">Price<b>:</b> <span class="font-medium"> {{wish.price | currency: "EGP " }} </span> </h4>                    </div>                                        <div class="flex flex-col-reverse gap-4">                        <button (click)="removeItem(wish.id)" class="hart text-2xl"> <i class="fa-solid fa-heart-circle-minus"></i> </button>                        <button (click)="addToCart(wish.id)" class="cart text-2xl me-1"> <i class="fa-solid fa-cart-plus"></i> </button>                                            </div>                        </div>                    </div>        }            </section>}@else {    <div class="flex flex-col justify-center items-center">        <img src="/images/Empty-WishList.png" class="mx-auto w-[650px] h-[450px]" alt="Empty WishList">        <h3 class="text-4xl font-bold">Your Wishlist is empty:(</h3>        <p class="text-[#807D7E] my-4">Start adding items to your wishlist!</p>        <button routerLink="/products" class="bg-[#00594E]  hover:bg-[#0aad0a] duration-500  py-3 px-8 rounded-lg text-xl text-white">Start Shopping</button>    </div>}</div>'
+    var COMPONENTS = [{'name': 'AllordersComponent', 'selector': 'app-allorders'},{'name': 'AllProductsComponent', 'selector': 'app-all-products'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthLayoutComponent', 'selector': 'app-auth-layout'},{'name': 'BrandsComponent', 'selector': 'app-brands'},{'name': 'CartComponent', 'selector': 'app-cart'},{'name': 'CategoriesComponent', 'selector': 'app-categories'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'DetailsComponent', 'selector': 'app-details'},{'name': 'ErrorMessageComponent', 'selector': 'app-error-message'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'ForgotpasswordComponent', 'selector': 'app-forgotpassword'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'MainSliderComponent', 'selector': 'app-main-slider'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'PopularCategoriesComponent', 'selector': 'app-popular-categories'},{'name': 'ProductItemComponent', 'selector': 'app-product-item'},{'name': 'ProductsComponent', 'selector': 'app-products'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'WishlistComponent', 'selector': 'app-wishlist'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WishlistComponent'};
 </script>

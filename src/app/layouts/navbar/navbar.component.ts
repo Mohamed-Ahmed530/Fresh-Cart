@@ -38,20 +38,12 @@ export class NavbarComponent implements OnInit {
       })
   }
 
-  
   // flowbite
   ngAfterViewInit(): void {
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
     });
   }
-
-
-  // ========== LogOut ==========
-  logOut(){
-  this.authService.logOutUser();
-  }
-  
 
   @HostListener('window:scroll') onscroll() {
     if (window.scrollY > 0) {
@@ -60,5 +52,9 @@ export class NavbarComponent implements OnInit {
       this.scrollp = false;
     }
   }
-  
+
+  logOut(){
+  this.authService.logOutUser();
+  }
+
   }

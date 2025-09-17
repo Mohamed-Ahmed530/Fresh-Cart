@@ -2,10 +2,11 @@ import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core
 import { FormGroup, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { OrdersService } from '../../core/services/orders/orders.service';
+import { ErrorMessageComponent } from "../../shared/components/ui/error-message/error-message.component";
 
 @Component({
   selector: 'app-checkout',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ErrorMessageComponent],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
 })
@@ -15,7 +16,7 @@ export class CheckoutComponent implements OnInit  {
   private readonly ordersService = inject(OrdersService)
   private readonly formBuilder = inject( FormBuilder )
 
-  checkOutForm!: FormGroup ;
+  checkOutForm!: FormGroup;
   cartId!:string;
   isvalid:WritableSignal<boolean> = signal(false)
 
@@ -23,7 +24,6 @@ export class CheckoutComponent implements OnInit  {
     this.getCartId();
     this.initForm();
   }
-  
   
   getCartId (){
 
@@ -37,7 +37,6 @@ export class CheckoutComponent implements OnInit  {
   }
 
 
-
   initForm(){
     this.checkOutForm = this.formBuilder.group({
       details:[null, [Validators.required]],
@@ -46,8 +45,7 @@ export class CheckoutComponent implements OnInit  {
     })
   }
 
-
-
+  
   submitForm() {
     // onLine
     if (this.checkOutForm.valid) {

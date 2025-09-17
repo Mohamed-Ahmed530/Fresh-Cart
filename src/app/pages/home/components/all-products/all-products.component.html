@@ -1,43 +1,30 @@
-    <input [(ngModel)]="text" type="search" id="search" class="block w-1/2 mx-auto py-2 my-2 ps-10 text-sm text-gray-900 border border-green-300 rounded-lg bg-green-50 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="Search For Product..." required />
+<section>
 
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <h2 class="text-4xl font-medium mb-4 text-main">Popular Products<b>:</b></h2>
 
-        @for (product of products() | search: text() ; track product.id) {
-            <div class="card product shadow-lg relative">
-                <div>
-                    <a [routerLink]="['/details', product.id]" class="card-img cursor-pointer">
-                        <img [src]="product.imageCover" class="w-full h-[250px] object-contain" [alt]="product.title" />
-                    </a>
-                    <div class="card-body px-2 py-3">
-                        <div class="my-1">
-                            <h4 class=""> {{product.category.name}} </h4>
-                        </div>
-                        
-                        <div class="flex justify-between items-center my-2">
-                            <h3 class="text-2xl"> {{product.title | termText: 1}} </h3>
-                            <span (click)="addToWishList(product.id)" class="hart cursor-pointer">
-                                <i class="fa-solid fa-heart-circle-plus text-2xl"></i> 
-                            </span>
-                        </div>
-
-                        <div class="flex justify-between items-center">
-                            <span class="font-medium"> {{ product.price | currency:"EGP " }} </span>
-                        
-                            <div class="flex items-center">
-                                @for (num of [1,2,3,4,5].slice(0 , product.ratingsAverage) ;track $index  ) {
-                                    <i class="fas fa-star rating-color"></i>
-                                }
-                                    @if (product.ratingsAverage % 1 !== 0 ) {
-                                    <i class="fa-solid fa-star-half-stroke rating-color"></i>
-                                }
-                                <span class="text-gray-500"> {{product.ratingsAverage}} </span>
-                            </div>
-                        
-                        </div>
-                    </div>
-                </div>
-                <button (click)="addToCart(product.id)" class="btn-main mb-1 w-[90%] mx-auto block"> <i class="fa-solid fa-cart-plus mx-1"></i> Add To Cart</button>
-            </div>
-        }
-
+    <div class="search-wrapper">
+        <div class="search-box">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+            </svg>
+            <input [(ngModel)]="text" type="search" id="search" class="search-input" placeholder="Search For Product..." required />
+        </div>
     </div>
+    
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    
+        @for (product of products().slice(12) | search: text() | paginate: { id: 'foo',itemsPerPage: pageSize,currentPage: p, totalItems: total } ; track product.id) {
+            <app-product-item [product]="product" ></app-product-item>
+        }
+    
+    </div>
+    
+    <div class="flex justify-center mt-8">
+        <pagination-controls class="my-pagination" id="foo"
+                        (pageChange)="getProductData($event)">
+        </pagination-controls>
+    </div>
+
+
+</section>
